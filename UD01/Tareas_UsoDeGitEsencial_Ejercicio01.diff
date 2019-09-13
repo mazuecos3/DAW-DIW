@@ -1,0 +1,36 @@
+diff --git a/tmp/diferente.txt b/tmp/diferente.txt
+index 66113b1..de99ca4 100644
+--- a/tmp/diferente.txt
++++ b/tmp/diferente.txt
+@@ -1 +1,10 @@
+-Esto en otro diferente
++
++
++asdf
++as
++df
++as
++df
++sa
++df
++saEsto en otro diferente
+diff --git a/tmp/otro.txt b/tmp/otro.txt
+index 329fce6..cbb8815 100644
+--- a/tmp/otro.txt
++++ b/tmp/otro.txt
+@@ -1 +1 @@
+-Esto en otro archivo
++asdf OHlasdf Esto en otro archivo
+diff --git a/tmp/ultimo.txt b/tmp/ultimo.txt
+index 52f57c7..3425374 100644
+--- a/tmp/ultimo.txt
++++ b/tmp/ultimo.txt
+@@ -1 +1,7 @@
+-Y esto ultimo en otro
++
++sadf
++
++ga
++sdf
++as
++dfY esto ultimo en otro
