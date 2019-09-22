@@ -1,37 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+    <style>
+        html, body { 
+  height:100%; 
+  margin:5px;
+  padding:5px;
+}
+
+
+
+
+        header {
+            background-color: #FFE5A3;
+        }
+
+        body {
+            background-color: #CFFF96;
+        }
+
+        .carreras  {
+          background-color: #EDE898;
+        }
+        
+     
+        footer {
+            background-color: #FFE5A3;
+        }
+    </style>
+
+
+<!-- Cabecera -->
+<header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  
 
-    <title>Prototipo Web</title>
+
+    <title>SuperRunners</title>
 
 <!-- Logotipo -->
 
-        <h1>Carreras Municipales</h1>
+        <h1>SuperRunners</h1>
 
  <!-- Menu -->
+ <img src="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png" width="63" height="64" alt="SuperRunners" title="SuperRunners">
+ 
+
 
         <nav>
-          <img src="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png" width="63" height="64" alt="HTML5 Powered" title="HTML5 Powered">
+         
             <a href="">Noticias</a> |
             <a href="">Contacto</a> |
             <a href="">Cuestionario</a> |
             <a href="">Carrito</a>
     </nav>
 
-<br>
+
+<h4>Inicia sesion o Registrate</h4>
     <form action="" class="iniciarSesion">
         <input type="text" placeholder="Usuario">
         <input type="password" placeholder="password">
         <input type="submit" value="Iniciar Sesion">
+        <input type="submit" value="Registrarse">
 
     </form>
-    </head>
+
+   
+    <h4>Busca tus carreras preferidas</h4>
+<form action="" class="buscador" >
+
+    <input type="text" placeholder="Ejemplo: Paiporta..."> 
+    <button type="submit">Buscar</button>   
+    
+
+</form>
+    
+    </header>
+
+
+<!-- CONTENEDOR CENTRAL -->
     <body>
 
+      <section>
       <div class="calendario">
 
       </div>
@@ -89,8 +142,9 @@
               </article>
 
             </div>
-
-
+ 
+      </section>
+          </body>
         <footer>
 
             <div class="footer">
@@ -104,5 +158,5 @@
             </div>
         </footer>
 
-    </body>
+   
     </html>
