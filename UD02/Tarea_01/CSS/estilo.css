@@ -1,0 +1,46 @@
+ 
+ html, body { 
+    height:100%; 
+    margin:5px;
+    padding:5px;
+  }
+  
+          header {
+              background-color: #FFE5A3;
+              text-align: center;
+          }
+  
+          body {
+              background-color: #CFFF96;
+          }
+          .sobre  {
+  
+            background-color:  #EDE898;
+          }
+
+          
+          .carreras {
+            background-color: #EDE898;
+           
+          }
+
+
+          .carreras form {
+            background-color: #EDE898;
+            text-align: center;
+            padding-top: 20px;
+          }
+          nav  {
+              
+            display: inline;
+          
+          }
+       
+       form{
+           
+            text-align: right;
+            
+          }
+          footer {
+              background-color: #FFE5A3;
+          }

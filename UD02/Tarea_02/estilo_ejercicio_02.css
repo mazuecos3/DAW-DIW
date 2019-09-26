@@ -1,0 +1,83 @@
+body{
+    background-color: #9c9c9c;
+    font-family: "Open Sans";
+    font-weight: bold;
+}
+
+
+h1{
+
+    text-align: center;
+}
+
+a{
+
+    text-decoration: none;
+    color: black;
+}
+
+ul{
+
+    list-style: none;
+    
+}
+
+li{
+    
+display: inline-block;
+margin-right: 15%;
+margin-bottom: 15%;
+
+}
+
+
+
+a[rel='next']:before {
+	
+content: url('iconos/add_circle_outline-24px.svg');
+	
+
+}
+
+a[rel='tag']:before {
+	
+content: url('iconos/shopping_cart-24px.svg');
+	
+}
+		
+a[rel='bookmark']:before {
+	
+content: url('iconos/star-24px.svg');
+
+}
+		
+a[rel='help']:before {
+	
+content: url('iconos/picture_as_pdf-24px.svg');
+	
+}
+		
+
+a[rel='search']:before {
+	
+content: url('iconos/image_search-24px.svg');
+	
+}
+		
+
+a[rel='nofollow']:before {
+	
+content: url('iconos/fingerprint-24px.svg');
+	
+}
+
+/* Añadir palabra Brexit a noticias*/
+a[rel='alternate']:after {
+	
+    font-weight: negrita;
+   
+    content: " Brexit ";
+   
+    }
+
+    
