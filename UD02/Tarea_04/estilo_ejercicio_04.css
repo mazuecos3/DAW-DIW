@@ -1,0 +1,72 @@
+body{
+
+font-family: Grenze;
+
+}
+
+input[id='nombre'] {
+
+    background-color: 	#FFCC66;
+}
+
+select[id='profesion']{
+
+border-radius: 2em;
+font-family: Grenze;
+
+}
+/*ERROR EN ROJO*/
+input[id='nombre']:invalid{
+
+    background-color: red;
+    
+    }
+
+input[id='puntosCordura'] {
+
+    background-color: red;
+}
+
+/*ERROR EN ROJO
+
+
+Mientras este en el rango de 1 a 100 , sino en rojo*/
+
+input[id='puntosCordura']:in-range{
+
+    background-color:#FFCC66;
+}
+
+input[type='checkbox']:checked::after{
+    
+    content: url('chulu.svg');
+
+
+}
+
+input[type='submit'] {
+
+    font-family: Grenze;
+    background-color: #FFCC66;
+    border-radius: 2em;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 3px yellow;
+    
+    
+}
+
+input:target{
+    background-color: blue;
+    text-decoration: none;
+}
+
+
+
+
+
+ 
+
+
+
+
