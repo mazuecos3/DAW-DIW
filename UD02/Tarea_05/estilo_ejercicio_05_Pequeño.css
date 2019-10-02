@@ -1,0 +1,43 @@
+body{
+     
+    font-family:Amatic SC;
+    font-size: 200%;
+    
+     }
+    
+    
+
+     header{
+       
+        background-color: lightgrey;;
+     }
+    
+     a{
+       
+        text-decoration: none;
+        color: black;
+    }
+    
+    li{
+
+      list-style: none;
+    }
+    li a{
+       
+        color: green;
+        list-style: none;
+        margin-right: 10px;
+        padding: 1%;
+    }
+
+    .modulo{
+
+        display: inline-block;
+        width: 30%;
+    }
+
+    .modulo:nth-child(even){
+        background-color: lightgray;
+    }
+    
+   
