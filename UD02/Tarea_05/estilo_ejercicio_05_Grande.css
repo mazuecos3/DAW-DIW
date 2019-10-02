@@ -36,5 +36,28 @@ body{
     .modulo:nth-child(even){
         background-color: lightgray;
     }
+
+
+    .activo::before{
+
+
+        background-image: url(cthulhu.svg);
+        width: 50px;
+        height: 50px;
+        position: absolute;
     
-   
+       }
+    
+
+       /* CHULICUUU */
+       .activo{
+
+
+        background-image: url(cthulhu.svg);
+        background-position: center;
+
+        background-size: 40px;
+        background-repeat: no-repeat;
+      
+       
+       }

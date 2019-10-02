@@ -28,14 +28,21 @@ input[id='puntosCordura'] {
 
 Mientras este en el rango de 1 a 100 , sino en rojo*/
 
+a{
+    color: black;
+    text-decoration: none;
+}
+
 input[id='puntosCordura']:in-range {
     background-color: #FFCC66;
 }
 
-input[type='checkbox']:checked::after {
+input[type='checkbox']:checked{
+
     content: url(chulu.svg);
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
+    
 }
 
 input[type='submit'] {
