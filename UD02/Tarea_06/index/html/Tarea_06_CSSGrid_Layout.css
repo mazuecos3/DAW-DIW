@@ -32,3 +32,12 @@
  .item:nth-child(odd):hover {
      box-shadow: 10px 10px 10px black;
  }
+ /*Añadiendo la imagen a en la posicion inferior derecha*/
+ 
+ #SealOfApproval {
+     background-image: url(cthulhu_approval.gif);
+     width: 170px;
+     height: 150px;
+     background-repeat: none;
+     background-size: 250px 250px;
+ }
