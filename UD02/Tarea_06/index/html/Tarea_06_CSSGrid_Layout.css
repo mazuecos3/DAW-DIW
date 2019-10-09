@@ -1,0 +1,25 @@
+ h1 {
+     text-align: center;
+ }
+ /*
+ Aplicamos el display grid y utilizamos la tecnica del frances para hacer la estructura.
+
+ Le indicamos que la segunda y cuarta columna sean el doble de grandes.
+ */
+ 
+ .container {
+     display: grid;
+     grid-gap: 30px;
+     grid-template-columns: 1fr 2fr 1fr 2fr;
+     grid-template-rows: repeat(5, 1fr);
+ }
+ /*Cambiamos el color de fondo a los Impares*/
+ 
+ .item:nth-child(odd) {
+     background-color: lightgrey;
+ }
+ /*Hacemos que el item 2 ocupe un espacio de 3 columnas ">>>" en su fila*/
+ 
+ .item2 {
+     grid-column-end: span 3;
+ }
