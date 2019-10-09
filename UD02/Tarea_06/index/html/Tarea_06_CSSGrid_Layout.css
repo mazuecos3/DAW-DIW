@@ -9,8 +9,8 @@
  
  .container {
      display: grid;
-     grid-gap: 30px;
      grid-template-columns: 1fr 2fr 1fr 2fr;
+     grid-gap: 30px;
      grid-template-rows: repeat(5, 1fr);
  }
  /*Cambiamos el color de fondo a los Impares*/
@@ -22,4 +22,13 @@
  
  .item2 {
      grid-column-end: span 3;
+ }
+ /* Hover en los dos items*/
+ /* Lo que hacemos es aplicarle el hover primero a los items impares mas el siguiente item
+ pero si luego no añadimos despues de una coma, otra vez el hover al primer item no funciona
+ */
+ 
+ .item:hover:nth-child(odd)+.item,
+ .item:nth-child(odd):hover {
+     box-shadow: 10px 10px 10px black;
  }
