@@ -1,52 +1,56 @@
- h1 {
-     text-align: center;
- }
- /*
+      :root {
+         --gris: rgba(127, 127, 127, 0.932);
+     }
+     
+     h1 {
+         text-align: center;
+     }
+     /*
  Aplicamos el display grid y utilizamos la tecnica del frances para hacer la estructura.
 
  Le indicamos que la segunda y cuarta columna sean el doble de grandes.
  */
- 
- .container {
-     display: grid;
-     grid-template-columns: 1fr 2fr 1fr 2fr;
-     grid-gap: 30px;
-     grid-template-rows: repeat(5, 1fr);
- }
- /*Cambiamos el color de fondo a los Impares*/
- 
- .item:nth-child(odd) {
-     background-color: lightgrey;
- }
- /*Hacemos que el item 2 ocupe un espacio de 3 columnas ">>>" en su fila*/
- 
- .item2 {
-     grid-column-end: span 3;
- }
- /* Hover en los dos items*/
- /* Lo que hacemos es aplicarle el hover primero a los items impares mas el siguiente item
+     
+     .container {
+         display: grid;
+         grid-template-columns: 1fr 2fr 1fr 2fr;
+         grid-gap: 30px;
+         grid-template-rows: repeat(5, 1fr);
+     }
+     /*Cambiamos el color de fondo a los Impares*/
+     
+     .item:nth-child(odd) {
+         background-color: var(--gris);
+     }
+     /*Hacemos que el item 2 ocupe un espacio de 3 columnas ">>>" en su fila*/
+     
+     .item2 {
+         grid-column-end: span 3;
+     }
+     /* Hover en los dos items*/
+     /* Lo que hacemos es aplicarle el hover primero a los items impares mas el siguiente item
  pero si luego no añadimos despues de una coma, otra vez el hover al primer item no funciona
  */
- 
- .item:hover:nth-child(odd)+.item,
- .item:nth-child(odd):hover {
-     box-shadow: 10px 10px 10px black;
- }
- /*Añadiendo la imagen a en la posicion inferior derecha
+     
+     .item:hover:nth-child(odd)+.item,
+     .item:nth-child(odd):hover {
+         box-shadow: 10px 10px 10px black;
+     }
+     /*Añadiendo la imagen a en la posicion inferior derecha
  
  Le establecemos posicion fija que este a bajo derecha con un pequeño margen tanto inferior como a la derecha
  
  */
- 
- #SealOfApproval {
-     background-image: url(cthulhu_approval.gif);
-     width: 170px;
-     height: 150px;
-     background-repeat: none;
-     background-size: 250px 250px;
-     position: fixed;
-     bottom: 0;
-     right: 0;
-     margin-bottom: 50px;
-     margin-right: 50px;
- }
+     
+     #SealOfApproval {
+         background-image: url(cthulhu_approval.gif);
+         width: 170px;
+         height: 150px;
+         background-repeat: none;
+         background-size: 250px 250px;
+         position: fixed;
+         bottom: 0;
+         right: 0;
+         margin-bottom: 50px;
+         margin-right: 50px;
+     }
