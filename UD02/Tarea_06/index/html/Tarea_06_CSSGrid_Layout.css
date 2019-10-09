@@ -32,7 +32,11 @@
  .item:nth-child(odd):hover {
      box-shadow: 10px 10px 10px black;
  }
- /*Añadiendo la imagen a en la posicion inferior derecha*/
+ /*Añadiendo la imagen a en la posicion inferior derecha
+ 
+ Le establecemos posicion fija que este a bajo derecha con un pequeño margen tanto inferior como a la derecha
+ 
+ */
  
  #SealOfApproval {
      background-image: url(cthulhu_approval.gif);
@@ -40,4 +44,9 @@
      height: 150px;
      background-repeat: none;
      background-size: 250px 250px;
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     margin-bottom: 50px;
+     margin-right: 50px;
  }
