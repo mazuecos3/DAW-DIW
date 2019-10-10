@@ -38,7 +38,7 @@
      }
      /*Añadiendo la imagen a en la posicion inferior derecha
  
- Le establecemos posicion fija que este a bajo derecha con un pequeño margen tanto inferior como a la derecha
+ Le establecemos posicion fija que este a bajo derecha 
  
  */
      
@@ -51,6 +51,5 @@
          position: fixed;
          bottom: 0;
          right: 0;
-         margin-bottom: 50px;
-         margin-right: 50px;
+       
      }
