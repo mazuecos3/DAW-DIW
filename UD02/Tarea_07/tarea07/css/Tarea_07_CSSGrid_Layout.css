@@ -1,15 +1,13 @@
-h1 {
-    font-size: 5em;
-}
-
 .pagina {
     display: grid;
     grid-gap: 20px;
-    grid-template-areas: 'header header' 'nav main' 'footer footer';
+    grid-template-columns: 350px 1fr;
+    grid-template-areas: "header header" "nav main" "footer footer";
 }
 
-.header {
+header {
     grid-area: header;
+    justify-self: center;
 }
 
 nav {
@@ -18,8 +16,10 @@ nav {
 
 main {
     grid-area: main;
+    justify-items: stretch;
 }
 
 footer {
     grid-area: footer;
+    justify-self: center;
 }
