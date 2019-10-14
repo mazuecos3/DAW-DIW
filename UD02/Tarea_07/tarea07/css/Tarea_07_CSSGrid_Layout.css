@@ -1,0 +1,102 @@
+/* Establecemos el tamaño de la letra para el titulo */
+
+h1 {
+    font-size: 5em;
+}
+
+
+/* Establacemos el display grid y la primera columna de 400px y lo demás la segunda
+también asignamos cada zona de la area para hacer la estructura con una separacion de 30px
+
+*/
+
+.pagina {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 400px 1fr;
+    grid-template-areas: "header header" "nav main" "footer footer";
+}
+
+
+/*Establecemos la area del header y el texto centrado en este caso con un margin por abajo*/
+
+header {
+    grid-area: header;
+    justify-self: center;
+    margin-bottom: 50px;
+}
+
+
+/* Asignamos el area a el Menu de enlaces*/
+
+nav {
+    grid-area: nav;
+}
+
+
+/*Establecemos el borde para hacer el efecto de caja 
+                        y
+un margin izquierdo y por bajo para que quede como pide la prácitca*/
+
+nav li {
+    box-shadow: 2px 2px 10px black;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+
+/*Aumentamos el tamaño de la letra de los enlaces
+                    y
+quitamos el subrayado */
+
+nav a {
+    font-size: 4em;
+    text-decoration: none;
+    color: blue;
+}
+
+
+/*Quitamos los puntos de la ordenación*/
+
+ul {
+    list-style: none;
+}
+
+
+/*Añadimos otro display grid ya que va a tener su propio grid separado 
+en 3 columnas iguales donde estarán cada unad e las imagenes y añadimos el 
+justify stretch para que ocupe todo el ancho de las columnas
+*/
+
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px 7px;
+    justify-items: stretch;
+}
+
+
+/*Añadimos el tamaño a la imagen y un borde blanco*/
+
+.gallery__img img {
+    border: solid white 2px;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*Establacemos un borde exterior derecho y por bajo al clickar en el enlace de cada enlace*/
+
+.gallery__img img:target {
+    box-shadow: 5px 5px green;
+}
+
+
+/*Establecmeos el area de el footer, agrandamos y centramos el texto */
+
+footer {
+    font-size: 3em;
+    grid-area: footer;
+    justify-self: center;
+}
