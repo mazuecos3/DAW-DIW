@@ -1,5 +1,11 @@
+window.onload=function(){
+ 
+    listo()
+};
+
 function listo(){
 mapa =[
+[1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
 [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
@@ -12,16 +18,26 @@ mapa =[
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
 [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+[0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
  
- 
-for (var i=0;i<13;i++){
+
+
+
+for (var i=0;i<14;i++){
     for (var j=0;j<21;j++){
         var newDiv = document.createElement("div");
         if (mapa[i][j]==0){
-            newDiv.classList.add("rojo");
-        }else{
-            newDiv.classList.add("verde");
+            newDiv.classList.add("camino");
+        }else if (mapa[i][j]==1) {
+            newDiv.classList.add("bloques");
+        }
+        else if (mapa[i][j]==2) {
+            
+            newDiv.classList.add("personaje");
+        }
+        else if (mapa[i][j]==3) {
+            
+            newDiv.classList.add("momia");
         }
         document.querySelector(".mapa").appendChild(newDiv);
     }
@@ -29,7 +45,5 @@ for (var i=0;i<13;i++){
  
 }
  
-window.onload=function(){
- 
-    listo()
-};
+
+
