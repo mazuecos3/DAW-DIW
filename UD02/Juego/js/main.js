@@ -1,36 +1,37 @@
-var bartX;
-var bartY;
+
+// comprobar bloques con includes
+// mapa[i][j].value.classList.value.includes();
 
 var bart = {};
 bart.X=0;
 bart.Y=8;
 
+mapa =[
+    [9,9,9,9,9,9,9,9,2,9,9,9,9,9,9,9,9,9,9,9,9],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
+    [0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+
+
+    
 window.onload=function(){
  
     listo()
 };
 
 function listo(){
-mapa =[
-[9,9,9,9,9,9,9,9,2,9,9,9,9,9,9,9,9,9,9,9,9],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0],
-[0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
- 
-
 
 dibujarMapa();
-
 document.addEventListener("keydown", cogerTecla);
 
 }
@@ -61,6 +62,7 @@ function dibujarMapa(){
                 newDiv.classList.add("fondo");
             }
             document.querySelector(".mapa").appendChild(newDiv);
+          
         }
     }
     
@@ -68,7 +70,7 @@ function dibujarMapa(){
 
 
 function cogerTecla(e){		
-    		
+    
     var key_code = e.keyCode;
     switch(key_code){
         //flecha izquierda
@@ -103,19 +105,43 @@ function moverPersonaje(){
 
 
 function moverIzquierda(){
-  console.log("Has pulsado flecha izquierda")
-    
+   
+     
+    if (bart.Y != 0 ) { 
+        console.log("Has pulsado flecha izquierda");
+        console.log("Y: " +bart.Y);
+        bart.Y--;
+    } 
 }
 function moverArriba(){
+   
+   
+    if (bart.X != 1) {
 
-    console.log("Has pulsado flecha arriba")
+        console.log("Has pulsado flecha arriba");
+        console.log("X: " + bart.X);    
+        bart.X--;
+    }
 }
 function moverDerecha(){
-    console.log("Has pulsado flecha derecha")
+    
+    if (bart.Y != 20) {
+        console.log("Has pulsado flecha derecha");
+    console.log("Y: " + bart.Y);
+        bart.Y++;
+    }
 }
 function moverDebajo(){
-    console.log("Has pulsado flecha debajo")
-    bart.X++;
+  
+    if (bart.X != 13) {
+        console.log("Has pulsado flecha debajo");
+        console.log("X: " + bart.X);
+
+        
+        bart.X++;
+
+    }
+  
 }
 
 

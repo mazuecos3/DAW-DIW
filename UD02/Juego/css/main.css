@@ -7,7 +7,7 @@ body{
 }
 
 .camino{
-    width: 60px;
+    width: 50px;
     height:  50px;
   
     background-color: black;
@@ -15,7 +15,7 @@ body{
  
  
 .bloques{
-    width: 60px;
+    width: 50px;
     height: 50px;
     background-color: lightblue;
   
