@@ -1,54 +1,48 @@
-
-
-body{
+body {
     width: 99%;
     height: 99%;
     background-color: beige;
 }
 
-.camino{
+.camino {
     width: 50px;
-    height:  50px;
-  
+    height: 50px;
     background-color: black;
 }
- 
- 
-.bloques{
+
+.bloques {
     width: 50px;
     height: 50px;
     background-color: lightblue;
-  
 }
- 
-.mapa{
-    
+
+.mapa {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(21,50px);
-    grid-template-rows: repeat(14,50px);
+    grid-template-columns: repeat(21, 50px);
+    grid-template-rows: repeat(14, 50px);
     justify-content: center;
-    
 }
 
-.personaje{
-    
+.personaje {
     background-image: url("../images/personaje.png");
     background-size: 50px 50px;
-   background-color: black;
-
+    background-color: black;
 }
 
-.momia{
-    
+.momia {
     background-image: url("../images/momia.png");
     background-size: 50px 50px;
     background-color: black;
-    
-  
 }
-.fondo{
 
-background-color: beige;
+.fondo {
+    background-color: beige;
+}
+
+.huellas {
+    background-image: url("../images/huella.png");
+    background-size: 50px 50px;
+    background-color: black;
 }
