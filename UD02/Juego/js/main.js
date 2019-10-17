@@ -5,23 +5,12 @@
  }
         document.querySelector(".personaje").classList.replace("personaje", "huellas");  
 
-
-         var query = document.querySelector(".personaje");
-    query.classList.add("huellas");
-    query.classList.remove;
+        
    */
 
 
-var bart = {};
-bart.X = 0;
-bart.Y = 8;
-
-
-
-var bartViejoX = 0;
-var bartViejoY = 8;
-
-
+bartX = 0;
+bartY = 8;
 
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -40,52 +29,49 @@ mapa = [
     [0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-
-
 window.onload = function() {
-
     listo()
 };
 
 function listo() {
-
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-
 }
-
 
 function dibujarMapa() {
 
     document.querySelector(".mapa").innerHTML = "";
-
     //mapa[bartViejoX][bartViejoY]=4;
-
     for (var i = 0; i < 14; i++) {
         for (var j = 0; j < 21; j++) {
             var newDiv = document.createElement("div");
             if (mapa[i][j] == 0) {
                 newDiv.classList.add("camino");
+                mapa[i][j] = newDiv;
+                
             } else if (mapa[i][j] == 1) {
                 newDiv.classList.add("bloques");
+                mapa[i][j] = newDiv;
+
             } else if (mapa[i][j] == 2) {
                 newDiv.classList.add("personaje");
+                mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 3) {
                 newDiv.classList.add("momia");
+                mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 4) {
                 newDiv.classList.add("huellas");
+                mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 9) {
                 newDiv.classList.add("fondo");
+                mapa[i][j] = newDiv;
             }
             document.querySelector(".mapa").appendChild(newDiv);
-
 
         }
     }
 
 }
-
-
 function cogerTecla(e) {
 
     var teclaPulsada = e.keyCode;
@@ -110,76 +96,72 @@ function cogerTecla(e) {
             moverDebajo();
             break;
     }
-
-
-    moverPersonaje();
-    dibujarMapa();
+ 
 }
-
-function moverPersonaje() {
-    mapa[bart.X][bart.Y] = 2;
-
-
-}
-
-
-
 function moverIzquierda() {
 
-    if (bart.Y != 0) {
+    document.querySelector("personaje");
+    if (bartY != 0) {
         console.log("Has pulsado flecha izquierda");
-        console.log("Y: " + bart.Y);
-
-        bartViejoX = bart.X;
-        bartViejoY = bart.Y;
-        mapa[bartViejoX][bartViejoY] = 4;
-        
-        bart.Y--;
-
-        if (mapa[bart.X][bart.Y].classList.includes("bloques")) {
-            console.log("error");
-        }  
-      
+        console.log("Y: " + bartY);
+     
+        if (mapa[bartX][bartY - 1].classList.value.includes("bloques")) {
+            console.log("Choque Columna Izquierda");
+           } else {
+            mapa[bartX][bartY].classList.replace("personaje", "huellas");
+            bartY--;
+            mapa[bartX][bartY].classList.replace("camino", "personaje");
+           }
     }
 }
-
 function moverDerecha() {
 
-    if (bart.Y != 20) {
+    if (bartY != 20) {
         console.log("Has pulsado flecha derecha");
-        console.log("Y: " + bart.Y);
+        console.log("Y: " + bartY);
+       if (mapa[bartX][bartY + 1].classList.value.includes("bloques")) {
+        console.log("Choque Columna Derecha");
+       } else {
+        mapa[bartX][bartY].classList.replace("personaje", "huellas");
+        bartY++;
+        mapa[bartX][bartY].classList.replace("camino", "personaje");
+       }
         
-        bartViejoX = bart.X;
-        bartViejoY = bart.Y;
-        mapa[bartViejoX][bartViejoY] = 4;
-        bart.Y++;
     }
 }
 function moverArriba() {
 
-    if (bart.X != 1) {
+    if (bartX != 1) {
         console.log("Has pulsado flecha arriba");
-        console.log("X: " + bart.X);
+        console.log("X: " + bartX);
 
-        bartViejoX = bart.X;
-        bartViejoY = bart.Y;
-        mapa[bartViejoX][bartViejoY] = 4;
-        bart.X--;
-    }
-}
-
-function moverDebajo() {
-
-    if (bart.X != 13) {
-        console.log("Has pulsado flecha debajo");
-        console.log("X: " + bart.X);
-
-        bartViejoX = bart.X;
-        bartViejoY = bart.Y;
-        mapa[bartViejoX][bartViejoY] = 4;
-        bart.X++;
-
+        if (mapa[bartX - 1][bartY].classList.value.includes("bloques")) {
+            console.log("Choque Columna Arriba");
+        } else {
+            mapa[bartX][bartY].classList.replace("personaje", "huellas");
+            bartX--;
+            mapa[bartX][bartY].classList.replace("camino", "personaje");
+        }
        
     }
-
 }
+function moverDebajo() {
+
+    if (bartX != 13) {
+        console.log("Choque Columna Debajo");
+        console.log("X: " + bartX);
+
+        if (mapa[bartX + 1][bartY].classList.value.includes("bloques")) {
+         console.log("choque columna");
+        } else{
+
+            mapa[bartX][bartY].classList.replace("personaje", "huellas");  
+            bartX++;
+            mapa[bartX][bartY].classList.replace("camino", "personaje");
+        }
+      
+       
+       
+        }
+    }
+
