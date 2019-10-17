@@ -18,6 +18,9 @@ bart.Y = 8;
 
 
 
+var bartViejoX = 0;
+var bartViejoY = 8;
+
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -54,6 +57,8 @@ function dibujarMapa() {
 
     document.querySelector(".mapa").innerHTML = "";
 
+    //mapa[bartViejoX][bartViejoY]=4;
+
     for (var i = 0; i < 14; i++) {
         for (var j = 0; j < 21; j++) {
             var newDiv = document.createElement("div");
@@ -81,12 +86,8 @@ function dibujarMapa() {
 
 function cogerTecla(e) {
 
-
-
-
-
-    var key_code = e.keyCode;
-    switch (key_code) {
+    var teclaPulsada = e.keyCode;
+    switch (teclaPulsada) {
         //flecha izquierda
         case 37:
             moverIzquierda();
@@ -124,16 +125,11 @@ function moverIzquierda() {
     if (bart.Y != 0) {
         console.log("Has pulsado flecha izquierda");
         console.log("Y: " + bart.Y);
+       
+        bartViejoX = bart.X;
+        bartViejoY = bart.Y;
+        mapa[bartViejoX][bartViejoY] = 4;
         bart.Y--;
-    }
-}
-
-function moverArriba() {
-
-    if (bart.X != 1) {
-        console.log("Has pulsado flecha arriba");
-        console.log("X: " + bart.X);
-        bart.X--;
     }
 }
 
@@ -142,18 +138,38 @@ function moverDerecha() {
     if (bart.Y != 20) {
         console.log("Has pulsado flecha derecha");
         console.log("Y: " + bart.Y);
+        
+        bartViejoX = bart.X;
+        bartViejoY = bart.Y;
+        mapa[bartViejoX][bartViejoY] = 4;
         bart.Y++;
+    }
+}
+function moverArriba() {
+
+    if (bart.X != 1) {
+        console.log("Has pulsado flecha arriba");
+        console.log("X: " + bart.X);
+
+        bartViejoX = bart.X;
+        bartViejoY = bart.Y;
+        mapa[bartViejoX][bartViejoY] = 4;
+        bart.X--;
     }
 }
 
 function moverDebajo() {
 
-
     if (bart.X != 13) {
         console.log("Has pulsado flecha debajo");
         console.log("X: " + bart.X);
+
+        bartViejoX = bart.X;
+        bartViejoY = bart.Y;
+        mapa[bartViejoX][bartViejoY] = 4;
         bart.X++;
 
+       
     }
 
 }
