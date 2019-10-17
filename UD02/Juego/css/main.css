@@ -46,3 +46,13 @@ body {
     background-size: 50px 50px;
     background-color: black;
 }
+
+.central{
+    display: grid;
+   
+}
+h1{
+    text-align: center;
+    font-size: 3em;
+    color: lightblue;
+}

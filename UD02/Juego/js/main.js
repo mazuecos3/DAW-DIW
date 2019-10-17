@@ -21,6 +21,8 @@ bart.Y = 8;
 var bartViejoX = 0;
 var bartViejoY = 8;
 
+
+
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -120,16 +122,24 @@ function moverPersonaje() {
 
 }
 
+
+
 function moverIzquierda() {
 
     if (bart.Y != 0) {
         console.log("Has pulsado flecha izquierda");
         console.log("Y: " + bart.Y);
-       
+
         bartViejoX = bart.X;
         bartViejoY = bart.Y;
         mapa[bartViejoX][bartViejoY] = 4;
+        
         bart.Y--;
+
+        if (mapa[bart.X][bart.Y].classList.includes("bloques")) {
+            console.log("error");
+        }  
+      
     }
 }
 
