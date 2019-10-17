@@ -9,8 +9,8 @@
    */
 
 
-bartX = 0;
-bartY = 8;
+bart_Y = 0;
+bart_X = 8;
 
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -98,66 +98,72 @@ function cogerTecla(e) {
     }
  
 }
+
+
+function ComprobarMover(){
+
+
+}
 function moverIzquierda() {
 
     document.querySelector("personaje");
-    if (bartY != 0) {
+    if (bart_X != 0) {
         console.log("Has pulsado flecha izquierda");
-        console.log("Y: " + bartY);
+        console.log("X: " + bart_X);
      
-        if (mapa[bartX][bartY - 1].classList.value.includes("bloques")) {
+        if (!mapa[bart_Y][bart_X - 1].classList.value.includes("camino")) {
             console.log("Choque Columna Izquierda");
            } else {
-            mapa[bartX][bartY].classList.replace("personaje", "huellas");
-            bartY--;
-            mapa[bartX][bartY].classList.replace("camino", "personaje");
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+            bart_X--;
+            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
            }
     }
 }
 function moverDerecha() {
 
-    if (bartY != 20) {
+    if (bart_X != 20) {
         console.log("Has pulsado flecha derecha");
-        console.log("Y: " + bartY);
-       if (mapa[bartX][bartY + 1].classList.value.includes("bloques")) {
+        console.log("X: " + bart_X);
+       if (!mapa[bart_Y][bart_X + 1].classList.value.includes("camino")) {
         console.log("Choque Columna Derecha");
        } else {
-        mapa[bartX][bartY].classList.replace("personaje", "huellas");
-        bartY++;
-        mapa[bartX][bartY].classList.replace("camino", "personaje");
+        mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+        bart_X++;
+        mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
        }
         
     }
 }
 function moverArriba() {
 
-    if (bartX != 1) {
+    if (bart_Y != 1) {
         console.log("Has pulsado flecha arriba");
-        console.log("X: " + bartX);
+        console.log("Y: " + bart_Y);
 
-        if (mapa[bartX - 1][bartY].classList.value.includes("bloques")) {
+        if (!mapa[bart_Y - 1][bart_X].classList.value.includes("camino")) {
             console.log("Choque Columna Arriba");
         } else {
-            mapa[bartX][bartY].classList.replace("personaje", "huellas");
-            bartX--;
-            mapa[bartX][bartY].classList.replace("camino", "personaje");
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+            bart_Y--;
+            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
         }
        
     }
 }
 function moverDebajo() {
 
-    if (bartX != 13) {
-        console.log("Choque Columna Debajo");
-        console.log("X: " + bartX);
+    if (bart_Y != 13) {
+        console.log("Has pulsado flecha arriba");
+        console.log("Y: " + bart_Y);
 
-        if (mapa[bartX + 1][bartY].classList.value.includes("bloques")) {
-         console.log("choque columna");
+        if (!mapa[bart_Y + 1][bart_X].classList.value.includes("camino")) {
+         console.log("choque columna Debajo");
         } else{
 
-            mapa[bartX][bartY].classList.replace("personaje", "huellas");  
-            bartX++;
-            mapa[bartX][bartY].classList.replace("camino", "personaje");
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");  
+            bart_Y++;
+            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
         }
       
        
