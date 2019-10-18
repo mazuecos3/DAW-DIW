@@ -48,7 +48,7 @@ function dibujarMapa() {
             if (mapa[i][j] == 0) {
                 newDiv.classList.add("camino");
                 mapa[i][j] = newDiv;
-                
+
             } else if (mapa[i][j] == 1) {
                 newDiv.classList.add("bloques");
                 mapa[i][j] = newDiv;
@@ -72,6 +72,7 @@ function dibujarMapa() {
     }
 
 }
+
 function cogerTecla(e) {
 
     var teclaPulsada = e.keyCode;
@@ -96,78 +97,127 @@ function cogerTecla(e) {
             moverDebajo();
             break;
     }
- 
-}
-
-
-function ComprobarMover(){
-
 
 }
+
+
+//FUNCIONES MOVIMIENTOS
+
 function moverIzquierda() {
+    var aux = !mapa[bart_Y][bart_X - 1].classList.value.includes("camino");
+    var aux1 = !mapa[bart_Y][bart_X - 1].classList.value.includes("huellas");
 
-    document.querySelector("personaje");
     if (bart_X != 0) {
         console.log("Has pulsado flecha izquierda");
         console.log("X: " + bart_X);
-     
-        if (!mapa[bart_Y][bart_X - 1].classList.value.includes("camino")) {
+
+        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        if (aux && aux1) {
             console.log("Choque Columna Izquierda");
-           } else {
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        } else {
             mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
             bart_X--;
-            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
-           }
+            //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
+            if (!aux1) {
+                console.log("Huellas");
+                mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
+
+                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+            } else {
+                console.log("Camino")
+                mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            }
+        }
     }
 }
+
 function moverDerecha() {
 
+    var aux = !mapa[bart_Y][bart_X + 1].classList.value.includes("camino");
+    var aux1 = !mapa[bart_Y][bart_X + 1].classList.value.includes("huellas");
+    //SI Y ES DISTINTO DE 20 PARA EL RANGO
     if (bart_X != 20) {
-        console.log("Has pulsado flecha derecha");
+        console.log("Has pulsado flecha Derecha");
         console.log("X: " + bart_X);
-       if (!mapa[bart_Y][bart_X + 1].classList.value.includes("camino")) {
-        console.log("Choque Columna Derecha");
-       } else {
-        mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
-        bart_X++;
-        mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
-       }
-        
+        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        if (aux && aux1) {
+            console.log("Choque Columna Derecha");
+
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        } else {
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+            bart_X++;
+            //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
+            if (!aux1) {
+                console.log("Huellas");
+                mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
+
+                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+            } else {
+                console.log("Camino")
+                mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            }
+        }
     }
 }
+
 function moverArriba() {
 
-    if (bart_Y != 1) {
+    var aux = !mapa[bart_Y - 1][bart_X].classList.value.includes("camino");
+    var aux1 = !mapa[bart_Y - 1][bart_X].classList.value.includes("huellas");
+
+    //SI Y ES DISTINTO DE CERO PARA EL RANGO
+    if (bart_Y != 0) {
         console.log("Has pulsado flecha arriba");
         console.log("Y: " + bart_Y);
 
-        if (!mapa[bart_Y - 1][bart_X].classList.value.includes("camino")) {
+        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        if (aux && aux1) {
             console.log("Choque Columna Arriba");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
         } else {
             mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
             bart_Y--;
-            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
+            if (!aux1) {
+                console.log("Huellas");
+                mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
+
+                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+            } else {
+                console.log("Camino")
+                mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            }
         }
-       
     }
 }
+
 function moverDebajo() {
 
+    var aux = !mapa[bart_Y + 1][bart_X].classList.value.includes("camino");
+    var aux1 = !mapa[bart_Y + 1][bart_X].classList.value.includes("huellas");
     if (bart_Y != 13) {
         console.log("Has pulsado flecha arriba");
         console.log("Y: " + bart_Y);
 
-        if (!mapa[bart_Y + 1][bart_X].classList.value.includes("camino")) {
-         console.log("choque columna Debajo");
-        } else{
-
-            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");  
+        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        if (aux && aux1) {
+            console.log("Choque Columna Arriba");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        } else {
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
             bart_Y++;
-            mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
-        }
-      
-       
-       
+            //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
+            if (!aux1) {
+                console.log("Huellas");
+                mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
+
+                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+            } else {
+                console.log("Camino")
+                mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            }
         }
     }
-
+}

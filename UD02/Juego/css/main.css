@@ -48,18 +48,51 @@ body {
     background-color: black;
 }
 
-.central{
+.central {
     display: grid;
     grid-template-areas: "header header" "mapa mapa";
 }
-h1{
+
+h1 {
     text-align: center;
     font-size: 3em;
     color: lightblue;
 }
 
-.header{
-
+.header {
     grid-area: header;
     justify-self: center;
 }
+
+
+/*function moverArriba() {
+
+    var aux = !mapa[bart_Y - 1][bart_X].classList.value.includes("camino");
+    var aux1 = !mapa[bart_Y - 1][bart_X].classList.value.includes("huellas");
+
+    //SI Y ES DISTINTO DE CERO PARA EL RANGO
+    if (bart_Y != 0) {
+        console.log("Has pulsado flecha arriba");
+        console.log("Y: " + bart_Y);
+
+        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        if (aux && aux1) {
+            console.log("Choque Columna Arriba");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        } else {
+            mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+            bart_Y--;
+            //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
+            if (!aux1) {
+                console.log("Huellas");
+                mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
+
+                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+            } else {
+                console.log("Camino")
+                mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
+            }
+        }
+    }
+}
+*/
