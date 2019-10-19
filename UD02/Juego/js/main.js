@@ -1,26 +1,25 @@
-
-
 bart_Y = 1;
 bart_X = 9;
 
 
+
 mapa = [
-    [9 ,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9 ,9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9 ,0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9 ,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
 
 
@@ -75,7 +74,9 @@ function cogerTecla(e) {
     switch (teclaPulsada) {
         //flecha izquierda
         case 37:
+
             moverIzquierda();
+
             break;
 
             //flecha arriba
@@ -105,15 +106,17 @@ function moverIzquierda() {
 
     if (bart_X != 1) {
         console.log("Has pulsado flecha izquierda");
-       
+
 
         // SI Y NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Izquierda");
             //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
         } else {
+
             mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
             bart_X--;
+
             console.log("X: " + bart_X);
             //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
             if (!aux1) {
@@ -126,18 +129,20 @@ function moverIzquierda() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
+        comprobarBloques();
     }
+
 }
 
 function moverDerecha() {
 
-    
+
     var aux = !mapa[bart_Y][bart_X + 1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y][bart_X + 1].classList.value.includes("huellas");
     //SI Y ES DISTINTO DE 20 PARA EL RANGO
     if (bart_X != 21) {
         console.log("Has pulsado flecha Derecha");
-      
+
         // SI Y NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Derecha");
@@ -158,6 +163,8 @@ function moverDerecha() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
+
+        comprobarBloques();
     }
 }
 
@@ -169,7 +176,7 @@ function moverArriba() {
     //SI Y ES DISTINTO DE CERO PARA EL RANGO
     if (bart_Y != 1) {
         console.log("Has pulsado flecha arriba");
-      
+
 
         // SI Y NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
@@ -190,6 +197,8 @@ function moverArriba() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
+
+        comprobarBloques();
     }
 }
 
@@ -199,15 +208,16 @@ function moverDebajo() {
     var aux1 = !mapa[bart_Y + 1][bart_X].classList.value.includes("huellas");
     if (bart_Y != 14) {
         console.log("Has pulsado flecha arriba");
-      
+
 
         // SI Y NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Arriba");
-            
+
             //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
         } else {
             mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
+
             bart_Y++;
             console.log("Y: " + bart_Y);
             //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
@@ -221,14 +231,31 @@ function moverDebajo() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
+
+        comprobarBloques();
     }
 }
 
 
 function comprobarBloques() {
 
-        if (mapa[bart_Y - 1][bart_X - 1].classList.value.includes("huellas")) {
-        console.log("pintar")
-    } 
-    
+    let docBloques = document.querySelectorAll(".bloques");
+
+    console.log(docBloques[0]);
+
+
+
+
+
+
+}
+
+function comprobarBloqueRodeado(div, y, x) {
+
+    if (mapa[2][2].classList.value.includes("personaje")) {
+        console.log("Tus muertos");
+    } else {
+
+    }
+
 }
