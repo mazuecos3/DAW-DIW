@@ -7,17 +7,17 @@ mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 5, 5, 5, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 5, 5, 5, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 6, 6, 6, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 6, 6, 6, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
@@ -26,6 +26,7 @@ mapa = [
 
 window.onload = function() {
     listo()
+        //  randomImage();
 };
 
 function listo() {
@@ -56,6 +57,18 @@ function dibujarMapa() {
                 mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 4) {
                 newDiv.classList.add("huellas");
+                mapa[i][j] = newDiv;
+            } else if (mapa[i][j] == 5) {
+                newDiv.classList.add("papiro");
+                // newDiv.setAttribute("id", "random");
+                mapa[i][j] = newDiv;
+            } else if (mapa[i][j] == 6) {
+                newDiv.classList.add("llave");
+                // newDiv.setAttribute("id", "random");
+                mapa[i][j] = newDiv;
+            } else if (mapa[i][j] == 7) {
+                newDiv.classList.add("sarcofago");
+                // newDiv.setAttribute("id", "random");
                 mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 9) {
                 newDiv.classList.add("fondo");
@@ -108,7 +121,7 @@ function moverIzquierda() {
         console.log("Has pulsado flecha izquierda");
 
 
-        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        // SI  NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Izquierda");
             //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
@@ -139,11 +152,11 @@ function moverDerecha() {
 
     var aux = !mapa[bart_Y][bart_X + 1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y][bart_X + 1].classList.value.includes("huellas");
-    //SI Y ES DISTINTO DE 20 PARA EL RANGO
+    //SI  ES DISTINTO DE 20 PARA EL RANGO
     if (bart_X != 21) {
         console.log("Has pulsado flecha Derecha");
 
-        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        // SI  NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Derecha");
 
@@ -173,7 +186,7 @@ function moverArriba() {
     var aux = !mapa[bart_Y - 1][bart_X].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y - 1][bart_X].classList.value.includes("huellas");
 
-    //SI Y ES DISTINTO DE CERO PARA EL RANGO
+    //SI  ES DISTINTO DE CERO PARA EL RANGO
     if (bart_Y != 1) {
         console.log("Has pulsado flecha arriba");
 
@@ -210,7 +223,7 @@ function moverDebajo() {
         console.log("Has pulsado flecha arriba");
 
 
-        // SI Y NO ES CAMINO NI HUELLAS CHOCA
+        // SI  NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
             console.log("Choque Columna Arriba");
 
@@ -239,23 +252,35 @@ function moverDebajo() {
 
 function comprobarBloques() {
 
-    let docBloques = document.querySelectorAll(".bloques");
+
+
+    //Cogemos todos los div bloques
+
+    /*   let docBloques = document.querySelectorAll(".bloques");
 
     console.log(docBloques[0]);
-
-
-
-
-
+if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
+    
+}*/
 
 }
 
 function comprobarBloqueRodeado(div, y, x) {
 
+    /*
     if (mapa[2][2].classList.value.includes("personaje")) {
-        console.log("Tus muertos");
+        console.log("prueba");
     } else {
 
     }
+*/
+}
 
+//Establecer imagen random
+function randomImage() {
+    /*  var numimages = 3;
+      rndimg = new Array("C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png");
+      x = (Math.floor(Math.random() * numimages));
+      randomimage = (rndimg[x]);
+      document.getElementById("random").style.backgroundImage = "url(" + randomimage + ")";*/
 }

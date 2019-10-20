@@ -13,7 +13,16 @@ body {
 .bloques {
     width: 50px;
     height: 50px;
-    background-color: lightblue;
+    background-color: beige;
+    background-size: 50px 50px;
+}
+
+.random {
+    background: #ffffcc url("../images/key.png");
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    background-size: 50px 50px;
 }
 
 .mapa {
@@ -62,4 +71,28 @@ h1 {
 .header {
     grid-area: header;
     justify-self: center;
+}
+
+.papiro {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    background-size: 50px 50px;
+    background-image: url("../images/papiro.png");
+}
+
+.llave {
+    background-image: url("../images/key.png");
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    background-size: 50px 50px;
+}
+
+.sarcofago {
+    background-image: url("../images/sarcofago.jpg");
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    background-size: 50px 50px;
 }
