@@ -7,17 +7,17 @@ mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 5, 5, 5, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 5, 5, 5, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 6, 6, 6, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 6, 6, 6, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 6, 6, 6, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 6, 6, 6, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 5, 5, 5, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 9],
+    [9, 0, 5, 5, 5, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 9],
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
@@ -170,7 +170,7 @@ function moverDerecha() {
                 console.log("Huellas");
                 mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
 
-                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+                //SINO ES CAMINO  CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
             } else {
                 console.log("Camino")
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
@@ -204,7 +204,7 @@ function moverArriba() {
                 console.log("Huellas");
                 mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
 
-                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+                //SINO ES CAMINO  CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
             } else {
                 console.log("Camino")
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
@@ -220,12 +220,11 @@ function moverDebajo() {
     var aux = !mapa[bart_Y + 1][bart_X].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y + 1][bart_X].classList.value.includes("huellas");
     if (bart_Y != 14) {
-        console.log("Has pulsado flecha arriba");
-
+        console.log("Has pulsado flecha Debajo");
 
         // SI  NO ES CAMINO NI HUELLAS CHOCA
         if (aux && aux1) {
-            console.log("Choque Columna Arriba");
+            console.log("Choque Columna Debajo");
 
             //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
         } else {
@@ -238,7 +237,7 @@ function moverDebajo() {
                 console.log("Huellas");
                 mapa[bart_Y][bart_X].classList.replace("huellas", "personaje");
 
-                //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
+                //SINO ES CAMINO  CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
             } else {
                 console.log("Camino")
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
@@ -252,35 +251,61 @@ function moverDebajo() {
 
 function comprobarBloques() {
 
+    let docBloques = document.querySelectorAll(".bloques");
 
+
+    for (let i = 0; i < docBloques.length; i++) {
+
+        /*
+        Es lo mismo que hacer esto
+         && !(i > 14 && i < 29) && !(i > 44 && i < 59) && !(i > 74 && i < 89) && !(i > 104 && i < 119)
+         */
+        /* if (i % 15 == 0) {
+             console.log(docBloques[i]);
+         }*/
+
+        //COGEMOS EL PRIMER BLOQUE DE CADA COLUMNA
+        if (parseInt(i / 15) % 2 == 0) {
+            if (i % 3 == 0) {
+                console.log(docBloques[i]);
+
+            }
+
+        }
+
+    }
+
+
+    // RUEBAS !!!
+    /*console.log(document.getElementsByClassName(".mapa")[0].querySelector(docBloques[0]));*/
+    //POSIBLE AYUDA
+    /*if (!docBloques[i].classList.value.includes("camino") &&
+                       !docBloques[i + 1].classList.value.includes("camino") &&
+                       !docBloques[i + 2].classList.value.includes("camino") &&
+                       !docBloques[i + 15].classList.value.includes("camino") &&
+                       !docBloques[i + 16].classList.value.includes("camino") &&
+                       !docBloques[i + 17].classList.value.includes("camino")
+                   ) {
+                       console.log("PerroFlauta")
+                   }*/
 
     //Cogemos todos los div bloques
 
     /*   let docBloques = document.querySelectorAll(".bloques");
 
-    console.log(docBloques[0]);
-if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
-    
-}*/
+        console.log(docBloques[0]);
+    if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
+        
+    }*/
 
-}
-
-function comprobarBloqueRodeado(div, y, x) {
-
-    /*
-    if (mapa[2][2].classList.value.includes("personaje")) {
-        console.log("prueba");
-    } else {
-
-    }
-*/
 }
 
 //Establecer imagen random
-function randomImage() {
-    /*  var numimages = 3;
+
+/* function randomImage() {
+     var numimages = 3;
       rndimg = new Array("C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png");
       x = (Math.floor(Math.random() * numimages));
       randomimage = (rndimg[x]);
-      document.getElementById("random").style.backgroundImage = "url(" + randomimage + ")";*/
-}
+      document.getElementById("random").style.backgroundImage = "url(" + randomimage + ")";
+}*/
