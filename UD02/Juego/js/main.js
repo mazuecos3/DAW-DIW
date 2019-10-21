@@ -10,14 +10,14 @@ mapa = [
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 6, 6, 6, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 6, 6, 6, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 5, 5, 5, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 9],
-    [9, 0, 5, 5, 5, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 7, 7, 7, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
+    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
@@ -25,7 +25,9 @@ mapa = [
 
 
 window.onload = function() {
-    listo()
+    listo();
+    this.comprobarBloques();
+   
         //  randomImage();
 };
 
@@ -41,6 +43,9 @@ function dibujarMapa() {
     for (var i = 0; i < 16; i++) {
         for (var j = 0; j < 23; j++) {
             var newDiv = document.createElement("div");
+            newDiv.dataset.fila=i;
+            newDiv.dataset.columna=j;
+
             if (mapa[i][j] == 0) {
                 newDiv.classList.add("camino");
                 mapa[i][j] = newDiv;
@@ -117,6 +122,8 @@ function moverIzquierda() {
     var aux = !mapa[bart_Y][bart_X - 1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y][bart_X - 1].classList.value.includes("huellas");
 
+
+
     if (bart_X != 1) {
         console.log("Has pulsado flecha izquierda");
 
@@ -142,8 +149,16 @@ function moverIzquierda() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
-        comprobarBloques();
+       
     }
+
+  /*  console.log("bart_X " + bart_X);
+    console.log("bart_Y " + bart_Y);
+   
+    divArriba = document.querySelector("[data-arriba=" + CSS.escape(bart_X) + "]");
+    console.log(divArriba);*/
+
+
 
 }
 
@@ -177,7 +192,7 @@ function moverDerecha() {
             }
         }
 
-        comprobarBloques();
+       
     }
 }
 
@@ -211,7 +226,6 @@ function moverArriba() {
             }
         }
 
-        comprobarBloques();
     }
 }
 
@@ -244,7 +258,7 @@ function moverDebajo() {
             }
         }
 
-        comprobarBloques();
+       
     }
 }
 
@@ -256,23 +270,22 @@ function comprobarBloques() {
 
     for (let i = 0; i < docBloques.length; i++) {
 
-        /*
-        Es lo mismo que hacer esto
-         && !(i > 14 && i < 29) && !(i > 44 && i < 59) && !(i > 74 && i < 89) && !(i > 104 && i < 119)
-         */
-        /* if (i % 15 == 0) {
-             console.log(docBloques[i]);
-         }*/
+      
 
         //COGEMOS EL PRIMER BLOQUE DE CADA COLUMNA
         if (parseInt(i / 15) % 2 == 0) {
             if (i % 3 == 0) {
                 console.log(docBloques[i]);
+                console.log(docBloques[i + 1]);
+                console.log(docBloques[i + 2]);
+                console.log(docBloques[i + 15]);
+                console.log(docBloques[i + 16]);
+                console.log(docBloques[i + 17]);
 
             }
 
         }
-
+            
     }
 
 
