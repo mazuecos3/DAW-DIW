@@ -1,7 +1,8 @@
 bart_Y = 1;
 bart_X = 9;
 
-
+skinner_Y = 14;
+skinner_X = 5;
 
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -34,6 +35,7 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
+   setInterval(moverSkinner, 300); 
 }
 
 function dibujarMapa() {
@@ -81,10 +83,9 @@ function dibujarMapa() {
                 mapa[i][j] = newDiv;
             }
             document.querySelector(".mapa").appendChild(newDiv);
-
         }
     }
-
+    
 }
 
 function cogerTecla(e) {
@@ -107,6 +108,7 @@ function cogerTecla(e) {
             //flecha derecha   
         case 39:
             moverDerecha();
+            moverDerechaSkinner();
             break;
 
             //flecha debajo    
@@ -154,14 +156,7 @@ function moverIzquierda() {
 
     }
     comprobarBloques();
-    /*  console.log("bart_X " + bart_X);
-      console.log("bart_Y " + bart_Y);
-     
-      divArriba = document.querySelector("[data-arriba=" + bart_X)  +"]");
-      console.log(divArriba);*/
-
-
-
+ 
 }
 
 function moverDerecha() {
@@ -269,72 +264,138 @@ function moverDebajo() {
 
 }
 
+//MOVER SKINNER
 
-function comprobarBloques() {
+function moverSkinner() {
+    
+  let movimientoRandom =  Math.floor(Math.random() * 4);
+    switch (movimientoRandom) {
 
-    let docBloques = document.querySelectorAll(".bloques");
+            case 0:  
+                moverIzquierdaSkinner();
+            break;
 
-    let dataFila;
-    let dataColumna;
+            case 1:
+                moverDerechaSkinner();
+            break;
 
+            case 2:
+                moverArribaSkinner();
+            break;
 
-    for (let i = 0; i < docBloques.length; i++) {
-
-        //asignamos atributos filas y columnas
-        dataFila = docBloques[i].getAttribute("data-fila");
-        dataColumna = docBloques[i].getAttribute("data-columna");
-
-
-        // si no contiene camino a la derecha,arriba,debajo o izquierda 
-        //al incrementar peta solucionar mañana
-        if (!mapa[dataFila - 1][dataColumna].classList.value.includes("camino") &&
-            !mapa[dataFila + 1][dataColumna].classList.value.includes("camino") &&
-            !mapa[dataFila][dataColumna - 1].classList.value.includes("camino") &&
-            !mapa[dataFila][dataColumna + 1].classList.value.includes("camino")
-
-        ) {
-            console.log("rodeado");
-
-        }
-
-
+            case 3:
+                moverDebajoSkinner();
+            break;
+ 
     }
-
-
+    console.log(movimientoRandom);
 }
 
 
 
 
-// RUEBAS !!!
-/*console.log(document.getElementsByClassName(".mapa")[0].querySelector(docBloques[0]));*/
-//POSIBLE AYUDA
-/*if (!docBloques[i].classList.value.includes("camino") &&
-                   !docBloques[i + 1].classList.value.includes("camino") &&
-                   !docBloques[i + 2].classList.value.includes("camino") &&
-                   !docBloques[i + 15].classList.value.includes("camino") &&
-                   !docBloques[i + 16].classList.value.includes("camino") &&
-                   !docBloques[i + 17].classList.value.includes("camino")
-               ) {
-                   console.log("PerroFlauta")
-               }*/
-
-//Cogemos todos los div bloques
-
-/*   let docBloques = document.querySelectorAll(".bloques");
-
-    console.log(docBloques[0]);
-if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
+function moverIzquierdaSkinner() {
+    var aux = !mapa[skinner_Y][skinner_X - 1].classList.value.includes("camino");
+    var aux1 = !mapa[skinner_Y][skinner_X - 1].classList.value.includes("huellas");
     
-}*/
+    if (skinner_X != 0) {
 
+        if (aux && aux1) {
+            console.log("Choque");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        }else{
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+            skinner_X--;
+            mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+    } 
 
-//Establecer imagen random
+}
+else{
+    moverDerechaSkinnerSkinner();
+}
+}
 
-/* function randomImage() {
-     var numimages = 3;
-      rndimg = new Array("C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png", "C:\Users\oscar\GitHub\DAW-DIW\UD02\Juego\images\key.png");
-      x = (Math.floor(Math.random() * numimages));
-      randomimage = (rndimg[x]);
-      document.getElementById("random").style.backgroundImage = "url(" + randomimage + ")";
-}*/
+function moverDerechaSkinner() {
+    var aux = !mapa[skinner_Y][skinner_X + 1].classList.value.includes("camino");
+    var aux1 = !mapa[skinner_Y][skinner_X + 1].classList.value.includes("huellas");
+
+    if (skinner_X != 21) {
+        
+        if (aux && aux1) {
+            console.log("Choque ");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        } else{
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+            skinner_X++;
+            mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+    } 
+}else{
+    moverArribaSkinner();
+}
+   
+}
+function moverArribaSkinner() {
+    var aux = !mapa[skinner_Y - 1][skinner_X].classList.value.includes("camino");
+    var aux1 = !mapa[skinner_Y - 1][skinner_X].classList.value.includes("huellas");
+
+    if (skinner_Y != 1) {
+        if (aux && aux1) {
+            console.log("Choque ");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        }else{
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+            skinner_Y--;
+            mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+    }
+}else{
+    moverDebajoSkinner();
+}
+   
+}
+function moverDebajoSkinner() {
+    var aux = !mapa[skinner_Y + 1][skinner_X].classList.value.includes("camino");
+    var aux1 = !mapa[skinner_Y + 1][skinner_X].classList.value.includes("huellas");
+
+    if (skinner_Y != 14) {
+        if (aux && aux1) {
+            console.log("Choque");
+            //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
+        }else{
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+            skinner_Y++;
+            mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+    }
+}else{
+    moverIzquierdaSkinner();
+}
+}
+
+//BLOQUES RODEADOS
+
+function comprobarBloques() {
+
+    let docBloques = document.getElementsByClassName("bloques");
+
+    let dataFila;
+    let dataColumna;
+
+    for (let i = 0; i < docBloques.length; i++) {
+
+        //asignamos atributos filas y columnas
+        dataFila = parseInt(docBloques[i].getAttribute("data-fila"));
+        dataColumna = parseInt(docBloques[i].getAttribute("data-columna"));
+     
+        // si no contiene camino a la derecha,arriba,debajo o izquierda 
+         
+            if ( 
+                !mapa[dataFila - 1][dataColumna].classList.value.includes("camino") &&
+                !mapa[dataFila][dataColumna - 1].classList.value.includes("camino") &&
+                !mapa[dataFila][dataColumna + 1].classList.value.includes("camino") &&
+                !mapa[dataFila + 1][dataColumna].classList.value.includes("camino") 
+                             
+               )  
+                 {     
+                console.log("rodeado");
+            }
+}
+}
