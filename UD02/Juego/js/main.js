@@ -26,9 +26,9 @@ mapa = [
 
 window.onload = function() {
     listo();
-    this.comprobarBloques();
-   
-        //  randomImage();
+
+
+    //  randomImage();
 };
 
 function listo() {
@@ -43,8 +43,9 @@ function dibujarMapa() {
     for (var i = 0; i < 16; i++) {
         for (var j = 0; j < 23; j++) {
             var newDiv = document.createElement("div");
-            newDiv.dataset.fila=i;
-            newDiv.dataset.columna=j;
+            //asignamos atributos fila y columna para i y j
+            newDiv.dataset.fila = i;
+            newDiv.dataset.columna = j;
 
             if (mapa[i][j] == 0) {
                 newDiv.classList.add("camino");
@@ -94,6 +95,7 @@ function cogerTecla(e) {
         case 37:
 
             moverIzquierda();
+
 
             break;
 
@@ -149,14 +151,14 @@ function moverIzquierda() {
                 mapa[bart_Y][bart_X].classList.replace("camino", "personaje");
             }
         }
-       
-    }
 
-  /*  console.log("bart_X " + bart_X);
-    console.log("bart_Y " + bart_Y);
-   
-    divArriba = document.querySelector("[data-arriba=" + CSS.escape(bart_X) + "]");
-    console.log(divArriba);*/
+    }
+    comprobarBloques();
+    /*  console.log("bart_X " + bart_X);
+      console.log("bart_Y " + bart_Y);
+     
+      divArriba = document.querySelector("[data-arriba=" + bart_X)  +"]");
+      console.log(divArriba);*/
 
 
 
@@ -192,8 +194,9 @@ function moverDerecha() {
             }
         }
 
-       
     }
+    comprobarBloques();
+
 }
 
 function moverArriba() {
@@ -227,6 +230,8 @@ function moverArriba() {
         }
 
     }
+    comprobarBloques();
+
 }
 
 function moverDebajo() {
@@ -258,8 +263,10 @@ function moverDebajo() {
             }
         }
 
-       
+
     }
+    comprobarBloques();
+
 }
 
 
@@ -267,51 +274,60 @@ function comprobarBloques() {
 
     let docBloques = document.querySelectorAll(".bloques");
 
+    let dataFila;
+    let dataColumna;
+
 
     for (let i = 0; i < docBloques.length; i++) {
 
-      
+        //asignamos atributos filas y columnas
+        dataFila = docBloques[i].getAttribute("data-fila");
+        dataColumna = docBloques[i].getAttribute("data-columna");
 
-        //COGEMOS EL PRIMER BLOQUE DE CADA COLUMNA
-        if (parseInt(i / 15) % 2 == 0) {
-            if (i % 3 == 0) {
-                console.log(docBloques[i]);
-                console.log(docBloques[i + 1]);
-                console.log(docBloques[i + 2]);
-                console.log(docBloques[i + 15]);
-                console.log(docBloques[i + 16]);
-                console.log(docBloques[i + 17]);
 
-            }
+        // si no contiene camino a la derecha,arriba,debajo o izquierda 
+        //al incrementar peta solucionar mañana
+        if (!mapa[dataFila - 1][dataColumna].classList.value.includes("camino") &&
+            !mapa[dataFila + 1][dataColumna].classList.value.includes("camino") &&
+            !mapa[dataFila][dataColumna - 1].classList.value.includes("camino") &&
+            !mapa[dataFila][dataColumna + 1].classList.value.includes("camino")
+
+        ) {
+            console.log("rodeado");
 
         }
-            
+
+
     }
 
 
-    // RUEBAS !!!
-    /*console.log(document.getElementsByClassName(".mapa")[0].querySelector(docBloques[0]));*/
-    //POSIBLE AYUDA
-    /*if (!docBloques[i].classList.value.includes("camino") &&
-                       !docBloques[i + 1].classList.value.includes("camino") &&
-                       !docBloques[i + 2].classList.value.includes("camino") &&
-                       !docBloques[i + 15].classList.value.includes("camino") &&
-                       !docBloques[i + 16].classList.value.includes("camino") &&
-                       !docBloques[i + 17].classList.value.includes("camino")
-                   ) {
-                       console.log("PerroFlauta")
-                   }*/
-
-    //Cogemos todos los div bloques
-
-    /*   let docBloques = document.querySelectorAll(".bloques");
-
-        console.log(docBloques[0]);
-    if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
-        
-    }*/
-
 }
+
+
+
+
+// RUEBAS !!!
+/*console.log(document.getElementsByClassName(".mapa")[0].querySelector(docBloques[0]));*/
+//POSIBLE AYUDA
+/*if (!docBloques[i].classList.value.includes("camino") &&
+                   !docBloques[i + 1].classList.value.includes("camino") &&
+                   !docBloques[i + 2].classList.value.includes("camino") &&
+                   !docBloques[i + 15].classList.value.includes("camino") &&
+                   !docBloques[i + 16].classList.value.includes("camino") &&
+                   !docBloques[i + 17].classList.value.includes("camino")
+               ) {
+                   console.log("PerroFlauta")
+               }*/
+
+//Cogemos todos los div bloques
+
+/*   let docBloques = document.querySelectorAll(".bloques");
+
+    console.log(docBloques[0]);
+if (docBloques[0] && docBloques[1] && docBloques[2] && docBloques[0 + 15 ] && docBloques[1 + 15] && docBloques[2 +15 ] ) {
+    
+}*/
+
 
 //Establecer imagen random
 
