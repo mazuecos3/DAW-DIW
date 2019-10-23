@@ -35,7 +35,7 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    setInterval(moverSkinner, 1000);
+    //setInterval(moverSkinner, 1000);
 }
 
 function dibujarMapa() {
@@ -66,19 +66,7 @@ function dibujarMapa() {
             } else if (mapa[i][j] == 4) {
                 newDiv.classList.add("huellas");
                 mapa[i][j] = newDiv;
-            } else if (mapa[i][j] == 5) {
-                newDiv.classList.add("papiro");
-                // newDiv.setAttribute("id", "random");
-                mapa[i][j] = newDiv;
-            } else if (mapa[i][j] == 6) {
-                newDiv.classList.add("llave");
-                // newDiv.setAttribute("id", "random");
-                mapa[i][j] = newDiv;
-            } else if (mapa[i][j] == 7) {
-                newDiv.classList.add("sarcofago");
-                // newDiv.setAttribute("id", "random");
-                mapa[i][j] = newDiv;
-            } else if (mapa[i][j] == 9) {
+            }  else if (mapa[i][j] == 9) {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
@@ -108,7 +96,7 @@ function cogerTecla(e) {
             //flecha derecha   
         case 39:
             moverDerecha();
-            moverDerechaSkinner();
+          
             break;
 
             //flecha debajo    
@@ -309,6 +297,7 @@ function moverIzquierdaSkinner() {
             mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
         }
 
+        //para que vaya mas fluido
     } else {
         moverDerechaSkinnerSkinner();
     }
@@ -328,6 +317,7 @@ function moverDerechaSkinner() {
             skinner_X++;
             mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
         }
+        //para que vaya mas fluido
     } else {
         moverArribaSkinner();
     }
@@ -347,6 +337,7 @@ function moverArribaSkinner() {
             skinner_Y--;
             mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
         }
+        //para que vaya mas fluido
     } else {
         moverDebajoSkinner();
     }
@@ -366,6 +357,7 @@ function moverDebajoSkinner() {
             skinner_Y++;
             mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
         }
+        //para que vaya mas fluido
     } else {
         moverIzquierdaSkinner();
     }
@@ -380,15 +372,15 @@ function comprobarBloques() {
     let dataFila;
     let dataColumna;
     let arrayPremios = ["papiro", "llave", "sarcofago"];
-
+    
     for (let i = 0; i < docBloques.length; i++) {
 
         //asignamos atributos filas y columnas
         dataFila = parseInt(docBloques[i].getAttribute("data-fila"));
         dataColumna = parseInt(docBloques[i].getAttribute("data-columna"));
-
-        if (dataFila < 13 && dataColumna < 21) {
-            // console.log(mapa[dataFila][dataColumna]);
+        //RANGO
+        if (dataFila < 14 && dataColumna < 21) {
+            
 
             // si no contiene camino o momia a la derecha,arriba,debajo o izquierda 
             if (!mapa[dataFila - 1][dataColumna].classList.value.includes("camino") &&
@@ -398,6 +390,7 @@ function comprobarBloques() {
 
             ) { //Añadimos divRodeado a cada bloque en caso de que tenga huellas o muros por los lados
                 docBloques[i].classList.add("divRodeado");
+               
             }
             // comprobamos si los 6 bloques de cada columna estan rodeados 
             if (docBloques[i].classList.value.includes("divRodeado") &&
@@ -421,4 +414,5 @@ function comprobarBloques() {
 
         }
     }
+   
 }
