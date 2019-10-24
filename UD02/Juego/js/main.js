@@ -20,7 +20,7 @@ mapa = [
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+    [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
 
@@ -389,7 +389,7 @@ function comprobarBloques() {
         dataFila = parseInt(docBloques[i].getAttribute("data-fila"));
         dataColumna = parseInt(docBloques[i].getAttribute("data-columna"));
 
-        if (dataFila < 13 && dataColumna < 21) {
+        if (dataFila < 14 && dataColumna < 21) {
             // console.log(mapa[dataFila][dataColumna]);
 
             // si no contiene camino o momia a la derecha,arriba,debajo o izquierda 
@@ -418,8 +418,10 @@ function comprobarBloques() {
                 docBloques[i + 17].classList.replace("divRodeado", "llave");
 
                 //contadorScore 
+
                 contadorPuntos += 100;
                 console.log("Puntos: " + contadorPuntos);
+
             }
 
 
