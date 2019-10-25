@@ -1,49 +1,52 @@
 body {
-    
     width: 99%;
     height: 800px;
-    background-color: beige;
+    background-color: #e3ab14;
 }
 
-
-.central{
-
+.central {
+    margin-left: 5%;
+    margin-right: 15%;
     display: grid;
-    grid-template-columns:1fr 1fr ;
+    grid-template-columns: 1fr 300px;
     grid-template-areas: "mapa leyenda";
+    justify-items: left;
 }
-
 
 .mapa {
-  
     display: grid;
     grid-template-columns: repeat(23, 50px);
     grid-template-rows: repeat(16, 50px);
     grid-area: mapa;
 }
-.leyenda{
-    
-    
+
+.leyenda {
+    margin-top: 15%;
+    text-align: center;
     display: grid;
     grid-area: leyenda;
-    
+    grid-template-rows: 150px 200px 200px;
 }
+
 .camino {
     width: 50px;
     height: 50px;
     background-color: black;
 }
+
 .personaje {
     background-image: url("../images/personaje.png");
     background-size: 50px 50px;
     background-color: black;
 }
+
 .bloques {
     width: 50px;
     height: 50px;
     background-color: beige;
     background-size: 50px 50px;
 }
+
 .momia {
     background-image: url("../images/momia.png");
     background-size: 50px 50px;
@@ -60,20 +63,9 @@ body {
     background-color: black;
 }
 
-
-
-h1 {
-    text-align: center;
-    font-size: 3em;
-    color: lightblue;
-}
-
-
-
 .autobus {
     width: 50px;
     height: 50px;
-   
     background-size: 50px 50px;
     background-image: url("../images/papiro.png");
 }
@@ -82,7 +74,6 @@ h1 {
     background-image: url("../images/key.png");
     width: 50px;
     height: 50px;
-   
     background-size: 50px 50px;
 }
 
@@ -90,21 +81,31 @@ h1 {
     background-image: url("../images/salida.png");
     width: 50px;
     height: 50px;
- 
     background-size: 50px 50px;
+    background-color: #e3ab14;
 }
 
 .divRodeado {}
 
 .batido {
-    background-image: url("../images/puntos.png");
+    background-image: url("../images/batido.png");
     width: 50px;
     height: 50px;
 }
 
 .nelson {
     background-image: url("../images/nelson.png");
-  
     width: 50px;
     height: 50px;
+}
+
+.puntos {
+    background-image: url("../images/puntos.png");
+    width: 50px;
+    height: 50px;
+}
+
+td {
+    font-family: "Homer Simpson UI";
+    border: 1px solid black;
 }

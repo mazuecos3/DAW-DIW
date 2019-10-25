@@ -2,8 +2,11 @@ var bart_Y = 1;
 var bart_X = 9;
 var skinner_Y = 14;
 var skinner_X = 5;
+var puntos = 0;
 
 var vidas = 5;
+
+//MAPA NIVEL INCIAL 1
 mapa = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -22,7 +25,7 @@ mapa = [
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
-
+//MAPA NIVEL 2
 mapa1 = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -49,7 +52,7 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    setInterval(moverSkinner, 50);
+    setInterval(moverSkinner, 1000);
 }
 
 function dibujarMapa() {
@@ -120,7 +123,7 @@ function cogerTecla(e) {
 //Movimiento Personaje
 
 function moverPersonaje(bart_Y1, bart_X1) {
-  
+    console.log(puntos);
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
 
@@ -130,13 +133,13 @@ function moverPersonaje(bart_Y1, bart_X1) {
         console.log("Choque Columna");
         //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
     } else {
-        
+
         mapa[bart_Y][bart_X].classList.replace("personaje", "huellas");
         //Incrementamos añadiendo las posiciones
         bart_Y = bart_Y1;
         bart_X = bart_X1;
 
-       
+
         //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
         if (!aux1) {
             console.log("Huellas");
@@ -215,7 +218,7 @@ function comprobarBloques() {
         dataFila = parseInt(docBloques[i].getAttribute("data-fila"));
         dataColumna = parseInt(docBloques[i].getAttribute("data-columna"));
         //RANGO 
-      
+
         if (dataFila < 14 && dataColumna < 21) {
 
             // si no contiene camino o momia a la derecha,arriba,debajo o izquierda 
@@ -226,7 +229,7 @@ function comprobarBloques() {
 
             ) { //Añadimos divRodeado a cada bloque en caso de que tenga huellas o muros por los lados
                 mapa[dataFila][dataColumna].classList.add("divRodeado");
-               
+
 
             }
             //COGER LA ESUQINA IZQUIERDA CADA 6 BLOQUES
@@ -239,10 +242,10 @@ function comprobarBloques() {
                         docBloques[117].classList.value.includes("divRodeado") &&
                         docBloques[118].classList.value.includes("divRodeado") &&
                         docBloques[119].classList.value.includes("divRodeado")) {
-                            //AÑADIMOS AUTOBUS 
-                            docBloques[103].classList.replace("divRodeado", "autobus") 
+                        //AÑADIMOS AUTOBUS 
+                        docBloques[103].classList.replace("divRodeado", "autobus")
 
-                    }// SI ES EL PRIMER BLOQUE DESVELAMOS BATIDO
+                    } // SI ES EL PRIMER BLOQUE DESVELAMOS BATIDO
                     if (docBloques[0].classList.value.includes("divRodeado") &&
                         docBloques[1].classList.value.includes("divRodeado") &&
                         docBloques[2].classList.value.includes("divRodeado") &&
@@ -251,10 +254,8 @@ function comprobarBloques() {
                         docBloques[17].classList.value.includes("divRodeado")) {
 
                         //AÑADIMOS BATIDO
-                            docBloques[1].classList.replace("divRodeado", "tirachinas");
-                           if ( docBloques[1].classList.value.includes("tirachinas")) {
-                               matar= true;
-                           }
+                        docBloques[1].classList.replace("divRodeado", "tirachinas");
+
 
                     } // Si rodeamos las posiciones seleccionadas debajo aparecera el tirachinas que es igual a la llave
                     if (docBloques[66].classList.value.includes("divRodeado") &&
@@ -264,8 +265,29 @@ function comprobarBloques() {
                         docBloques[82].classList.value.includes("divRodeado") &&
                         docBloques[83].classList.value.includes("divRodeado")) {
 
-                       //AÑADIMOS TIRACHINAS
-                            docBloques[67].classList.replace("divRodeado", "batido");
+                        //AÑADIMOS TIRACHINAS
+                        docBloques[67].classList.replace("divRodeado", "");
+                    }
+                    if (docBloques[6].classList.value.includes("divRodeado") &&
+                        docBloques[7].classList.value.includes("divRodeado") &&
+                        docBloques[8].classList.value.includes("divRodeado") &&
+                        docBloques[21].classList.value.includes("divRodeado") &&
+                        docBloques[22].classList.value.includes("divRodeado") &&
+                        docBloques[23].classList.value.includes("divRodeado")) {
+
+                        //AÑADIMOS PUNTOS
+                        docBloques[7].classList.replace("divRodeado", "puntos");
+
+                    }
+                    if (docBloques[42].classList.value.includes("divRodeado") &&
+                        docBloques[43].classList.value.includes("divRodeado") &&
+                        docBloques[44].classList.value.includes("divRodeado") &&
+                        docBloques[57].classList.value.includes("divRodeado") &&
+                        docBloques[58].classList.value.includes("divRodeado") &&
+                        docBloques[59].classList.value.includes("divRodeado")) {
+
+                        //AÑADIMOS PUNTOS
+                        docBloques[43].classList.replace("divRodeado", "puntos");
                     }
                     // comprobamos si los 6 bloques de cada columna estan rodeados 
                     if (docBloques[i].classList.value.includes("divRodeado") &&
@@ -275,10 +297,8 @@ function comprobarBloques() {
                         docBloques[i + 16].classList.value.includes("divRodeado") &&
                         docBloques[i + 17].classList.value.includes("divRodeado")
                     ) { //si estan rodeados cambiamos ese divrodeado por otra clase para que cambie
-                      
-                        docBloques[i + 1].classList.replace("divRodeado", "nelson");
-                       
 
+                        docBloques[i + 1].classList.replace("divRodeado", "nelson");
                     }
                 }
 
@@ -289,17 +309,19 @@ function comprobarBloques() {
 
     }
     //ABRIR PUERTA PARA PASAR DE NIVEL AL CONSEGUIR TANTO EL TIRACHINAS COMO EL AUTOBUS
-    if (docBloques[102].classList.value.includes("autobus") && docBloques[66].classList.value.includes("tirachinas")) {
+    if (docBloques[103].classList.value.includes("autobus") && docBloques[67].classList.value.includes("batido")) {
         mapa[1][9].classList.add("salida");
-         //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
-    
+        //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
         if (mapa[1][9].classList.value.includes("personaje")) {
             alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
         }
     }
-   
-    
-    
+    // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
+    if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
+        puntos = 100;
+    }
+    if (docBloques[7].classList.value.includes("puntos") && docBloques[43].classList.value.includes("puntos")) {
+        puntos = 200;
+    }
 
 }
-
