@@ -204,20 +204,20 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
 
         //SINO CAMBIA MOMIA POR CAMINO
     } else {
-        if (!aux1) {
-            console.log("Huellas");
-
-            mapa[skinner_Y][skinner_X].classList.replace("momia", "huellas");
-
-            //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR LA MOMIA PARA AVANZAR EL PERSONAJE
-        }
-
 
         mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
         skinner_Y = skinner_Y1;
         skinner_X = skinner_X1;
-        mapa[skinner_Y][skinner_X].classList.replace("huellas", "momia");
+        if (!aux1) {
+            mapa[skinner_Y][skinner_X].classList.replace("huellas", "momia");
+        } else {
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "huellas");
+
+        }
+
+
         mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+
 
 
 
