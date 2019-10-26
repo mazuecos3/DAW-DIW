@@ -3,8 +3,10 @@ var bart_X = 9;
 var skinner_Y = 14;
 var skinner_X = 5;
 var puntos = 0;
-
-var vidas = 5;
+var pantallaVidas;
+var pantallaPuntos;
+var vidas = [1, 2, 3, 4, 5];
+var vidasRestantes = 0;
 
 //MAPA NIVEL INCIAL 1
 mapa = [
@@ -52,7 +54,7 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    setInterval(moverSkinner, 1000);
+    setInterval(moverSkinner, 300);
 }
 
 function dibujarMapa() {
@@ -189,18 +191,36 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
     var aux2 = mapa[skinner_Y1][skinner_X1].classList.value.includes("personaje");
 
     if (aux && aux1) {
-        if (aux2) {
-            mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
-            vidas--;
-            console.log(vidas);
+
+        /*    if (aux2) {
+                mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+
+                pantallaVidas = document.getElementById("pantallaVidas");
+                pantallaVidas.value = parseInt(vidas.length - 1);
+                console.log(vidas.length - 1);
+
+
+            }*/
+
+        //SINO CAMBIA MOMIA POR CAMINO
+    } else {
+        if (!aux1) {
+            console.log("Huellas");
+
+            mapa[skinner_Y][skinner_X].classList.replace("momia", "huellas");
+
+            //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR LA MOMIA PARA AVANZAR EL PERSONAJE
         }
 
-        //SINO CAMBIA PEROSNAJE POR HUELLA PARA DEJAR EL RASTRO DE HUELLAS
-    } else {
+
         mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
         skinner_Y = skinner_Y1;
         skinner_X = skinner_X1;
+        mapa[skinner_Y][skinner_X].classList.replace("huellas", "momia");
         mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
+
+
+
     }
 
 }
@@ -266,7 +286,7 @@ function comprobarBloques() {
                         docBloques[83].classList.value.includes("divRodeado")) {
 
                         //AÑADIMOS TIRACHINAS
-                        docBloques[67].classList.replace("divRodeado", "");
+                        docBloques[67].classList.replace("divRodeado", "batido");
                     }
                     if (docBloques[6].classList.value.includes("divRodeado") &&
                         docBloques[7].classList.value.includes("divRodeado") &&
@@ -318,10 +338,14 @@ function comprobarBloques() {
     }
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
-        puntos = 100;
+        puntos = 1000;
+        pantallaPuntos = document.getElementById("pantallaPuntos");
+        pantallaPuntos.value = puntos;
     }
     if (docBloques[7].classList.value.includes("puntos") && docBloques[43].classList.value.includes("puntos")) {
-        puntos = 200;
+        puntos = 2000;
+        pantallaPuntos = document.getElementById("pantallaPuntos");
+        pantallaPuntos.value = puntos;
     }
 
 }

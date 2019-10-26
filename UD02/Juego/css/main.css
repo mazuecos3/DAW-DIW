@@ -105,7 +105,15 @@ body {
     height: 50px;
 }
 
-td {
+table {
     font-family: "Homer Simpson UI";
-    border: 1px solid black;
+    font-size: 2em;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
 }
