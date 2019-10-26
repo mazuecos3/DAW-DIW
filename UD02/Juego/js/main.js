@@ -5,8 +5,9 @@ var skinner_X = 5;
 var puntos = 0;
 var pantallaVidas;
 var pantallaPuntos;
-var vidas = [1, 2, 3, 4, 5];
-var vidasRestantes = 0;
+var vidas = 5;
+
+
 
 //MAPA NIVEL INCIAL 1
 mapa = [
@@ -27,25 +28,7 @@ mapa = [
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
-//MAPA NIVEL 2
-mapa1 = [
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
-];
+
 
 window.onload = function() {
     listo();
@@ -54,16 +37,18 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    setInterval(moverSkinner, 300);
+    // setInterval(moverSkinner, 1000);
+
+    //MOSTRAR PRIMERA VEZ VIDAS
+    pantallaVidas = document.getElementById("pantallaVidas");
+    pantallaVidas.value = parseInt(vidas);
 }
 
 function dibujarMapa() {
 
-    document.querySelector(".mapa").innerHTML = "";
-    //mapa[bartViejoX][bartViejoY]=4;
-    for (var i = 0; i < 16; i++) {
-        for (var j = 0; j < 23; j++) {
-            var newDiv = document.createElement("div");
+    for (let i = 0; i < 16; i++) {
+        for (let j = 0; j < 23; j++) {
+            let newDiv = document.createElement("div");
             //asignamos atributos fila y columna para i y j
             newDiv.dataset.fila = i;
             newDiv.dataset.columna = j;
@@ -80,6 +65,7 @@ function dibujarMapa() {
                 newDiv.classList.add("personaje");
                 mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 3) {
+                newDiv.classList.add("camino");
                 newDiv.classList.add("momia");
                 mapa[i][j] = newDiv;
             } else if (mapa[i][j] == 4) {
@@ -89,7 +75,7 @@ function dibujarMapa() {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
-            //newDiv.innerText = i + " : " + j;
+
             document.querySelector(".mapa").appendChild(newDiv);
         }
     }
@@ -125,7 +111,7 @@ function cogerTecla(e) {
 //Movimiento Personaje
 
 function moverPersonaje(bart_Y1, bart_X1) {
-    console.log(puntos);
+
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
 
@@ -140,6 +126,8 @@ function moverPersonaje(bart_Y1, bart_X1) {
         //Incrementamos añadiendo las posiciones
         bart_Y = bart_Y1;
         bart_X = bart_X1;
+        //Al avanzar comprobar choqueMomia y restar vida
+        comprobarVidas(bart_Y1, bart_X1, "momia");
 
 
         //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
@@ -188,42 +176,21 @@ function moverSkinner() {
 function movimientoSkiner(skinner_Y1, skinner_X1) {
     var aux = !mapa[skinner_Y1][skinner_X1].classList.value.includes("camino");
     var aux1 = !mapa[skinner_Y1][skinner_X1].classList.value.includes("huellas");
-    var aux2 = mapa[skinner_Y1][skinner_X1].classList.value.includes("personaje");
+
 
     if (aux && aux1) {
-
-        /*    if (aux2) {
-                mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
-
-                pantallaVidas = document.getElementById("pantallaVidas");
-                pantallaVidas.value = parseInt(vidas.length - 1);
-                console.log(vidas.length - 1);
-
-
-            }*/
-
+        comprobarVidas(skinner_Y1, skinner_X1, "personaje");
         //SINO CAMBIA MOMIA POR CAMINO
     } else {
-
-        mapa[skinner_Y][skinner_X].classList.replace("momia", "camino");
+        mapa[skinner_Y][skinner_X].classList.remove("momia");
         skinner_Y = skinner_Y1;
         skinner_X = skinner_X1;
-        if (!aux1) {
-            mapa[skinner_Y][skinner_X].classList.replace("huellas", "momia");
-        } else {
-            mapa[skinner_Y][skinner_X].classList.replace("momia", "huellas");
-
-        }
-
-
-        mapa[skinner_Y][skinner_X].classList.replace("camino", "momia");
-
-
-
-
+        mapa[skinner_Y][skinner_X].classList.add("momia");
     }
 
 }
+
+
 //BLOQUES RODEADOS
 
 function comprobarBloques() {
@@ -242,15 +209,13 @@ function comprobarBloques() {
         if (dataFila < 14 && dataColumna < 21) {
 
             // si no contiene camino o momia a la derecha,arriba,debajo o izquierda 
-            if (!mapa[dataFila - 1][dataColumna].classList.value.includes("camino") &&
-                !mapa[dataFila + 1][dataColumna].classList.value.includes("camino") &&
-                !mapa[dataFila][dataColumna + 1].classList.value.includes("camino") &&
-                !mapa[dataFila][dataColumna - 1].classList.value.includes("camino")
+            if (!mapa[dataFila - 1][dataColumna].classList.value.includes("camino", "momia") &&
+                !mapa[dataFila + 1][dataColumna].classList.value.includes("camino", "momia") &&
+                !mapa[dataFila][dataColumna + 1].classList.value.includes("camino", "momia") &&
+                !mapa[dataFila][dataColumna - 1].classList.value.includes("camino", "momia")
 
             ) { //Añadimos divRodeado a cada bloque en caso de que tenga huellas o muros por los lados
                 mapa[dataFila][dataColumna].classList.add("divRodeado");
-
-
             }
             //COGER LA ESUQINA IZQUIERDA CADA 6 BLOQUES
             if (parseInt(i / 15) % 2 == 0) {
@@ -328,14 +293,8 @@ function comprobarBloques() {
 
 
     }
-    //ABRIR PUERTA PARA PASAR DE NIVEL AL CONSEGUIR TANTO EL TIRACHINAS COMO EL AUTOBUS
-    if (docBloques[103].classList.value.includes("autobus") && docBloques[67].classList.value.includes("batido")) {
-        mapa[1][9].classList.add("salida");
-        //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
-        if (mapa[1][9].classList.value.includes("personaje")) {
-            alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
-        }
-    }
+
+
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
         puntos = 1000;
@@ -346,6 +305,35 @@ function comprobarBloques() {
         puntos = 2000;
         pantallaPuntos = document.getElementById("pantallaPuntos");
         pantallaPuntos.value = puntos;
+    }
+
+    //ABRIR PUERTA PARA PASAR DE NIVEL AL CONSEGUIR TANTO EL TIRACHINAS COMO EL AUTOBUS
+    if (docBloques[103].classList.value.includes("autobus") && docBloques[67].classList.value.includes("batido")) {
+        mapa[1][9].classList.add("salida");
+        //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
+        if (mapa[1][9].classList.value.includes("personaje")) {
+            alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
+
+            let myNode = document.getElementById("mapa");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+            dibujarMapa();
+
+        }
+    }
+
+
+}
+
+function comprobarVidas(posicionY, posicionX, personaje) {
+
+    var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
+    console.log("muertos");
+    if (aux1 && vidas > 0) {
+        vidas--;
+        pantallaVidas.value = parseInt(vidas);
+        console.log("asfasdf");
     }
 
 }

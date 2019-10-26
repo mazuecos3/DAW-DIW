@@ -2,6 +2,7 @@ body {
     width: 99%;
     height: 800px;
     background-color: #e3ab14;
+    font-family: "Arial Black";
 }
 
 .central {
@@ -48,7 +49,7 @@ body {
 }
 
 .momia {
-    background-image: url("../images/momia.png");
+    background-image: url("../images/momia.png")!important;
     background-size: 50px 50px;
     background-color: black;
 }
@@ -106,7 +107,6 @@ body {
 }
 
 table {
-    font-family: "Homer Simpson UI";
     font-size: 2em;
 }
 
