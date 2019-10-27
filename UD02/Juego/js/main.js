@@ -37,7 +37,7 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    // setInterval(moverSkinner, 1000);
+    setInterval(moverSkinner, 1000);
 
     //MOSTRAR PRIMERA VEZ VIDAS
     pantallaVidas = document.getElementById("pantallaVidas");
@@ -286,15 +286,9 @@ function comprobarBloques() {
                         docBloques[i + 1].classList.replace("divRodeado", "nelson");
                     }
                 }
-
             }
-
         }
-
-
     }
-
-
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
         puntos = 1000;
@@ -306,7 +300,6 @@ function comprobarBloques() {
         pantallaPuntos = document.getElementById("pantallaPuntos");
         pantallaPuntos.value = puntos;
     }
-
     //ABRIR PUERTA PARA PASAR DE NIVEL AL CONSEGUIR TANTO EL TIRACHINAS COMO EL AUTOBUS
     if (docBloques[103].classList.value.includes("autobus") && docBloques[67].classList.value.includes("batido")) {
         mapa[1][9].classList.add("salida");
@@ -314,16 +307,14 @@ function comprobarBloques() {
         if (mapa[1][9].classList.value.includes("personaje")) {
             alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
 
+            // RESETEAR MAPA 
             let myNode = document.getElementById("mapa");
             while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
             }
             dibujarMapa();
-
         }
     }
-
-
 }
 
 function comprobarVidas(posicionY, posicionX, personaje) {
@@ -334,6 +325,9 @@ function comprobarVidas(posicionY, posicionX, personaje) {
         vidas--;
         pantallaVidas.value = parseInt(vidas);
         console.log("asfasdf");
+    } else if (vidas == 0) {
+        alert("HAS PERDIDO LA PARTIDA");
+        dibujarMapa();
     }
 
 }

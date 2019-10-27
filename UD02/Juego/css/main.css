@@ -1,8 +1,7 @@
 body {
     width: 99%;
     height: 800px;
-    background-color: #e3ab14;
-    font-family: "Arial Black";
+    background-color: yellow;
 }
 
 .central {
@@ -22,7 +21,6 @@ body {
 }
 
 .leyenda {
-    margin-top: 15%;
     text-align: center;
     display: grid;
     grid-area: leyenda;
@@ -44,7 +42,7 @@ body {
 .bloques {
     width: 50px;
     height: 50px;
-    background-color: beige;
+    background-color: blue;
     background-size: 50px 50px;
 }
 
@@ -55,7 +53,7 @@ body {
 }
 
 .fondo {
-    background-image: url("../images/fondo.png");
+    background-color: yellow;
 }
 
 .huellas {
@@ -68,11 +66,11 @@ body {
     width: 50px;
     height: 50px;
     background-size: 50px 50px;
-    background-image: url("../images/papiro.png");
+    background-image: url("../images/bus.png");
 }
 
 .tirachinas {
-    background-image: url("../images/key.png");
+    background-image: url("../images/tirachinas.png");
     width: 50px;
     height: 50px;
     background-size: 50px 50px;
@@ -83,7 +81,7 @@ body {
     width: 50px;
     height: 50px;
     background-size: 50px 50px;
-    background-color: #e3ab14;
+    background-color: yellow;
 }
 
 .divRodeado {}
@@ -106,14 +104,29 @@ body {
     height: 50px;
 }
 
-table {
-    font-size: 2em;
+#primera {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+    font-size: 1.4em;
+    border: 3px dashed #1C6EA4;
+    border-radius: 15px;
+}
+
+#segunda {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+    border: 1px solid black;
+    font-size: 1.3em;
+    border: 3px dashed #1C6EA4;
+    border-radius: 15px;
 }
 
 input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
+    text-align: center;
+    font-size: 1.5em;
+    width: 80%;
+    padding: 5%;
     margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 10px 10px 10px 10px;
+    border: 0;
+    border-radius: 15px;
 }
