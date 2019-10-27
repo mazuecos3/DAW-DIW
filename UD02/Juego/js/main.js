@@ -2,10 +2,19 @@ var bart_Y = 1;
 var bart_X = 9;
 var skinner_Y = 14;
 var skinner_X = 5;
+var skinner_Y2 = 6;
+var skinner_X2 = 8;
 var puntos = 0;
 var pantallaVidas;
 var pantallaPuntos;
 var vidas = 5;
+
+var moverMomia = true;
+var matarMomia = false;
+
+var intervalFuncion = setInterval(moverSkinner, 300);
+
+var momias = new Array();
 
 
 
@@ -37,11 +46,11 @@ window.onload = function() {
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
-    setInterval(moverSkinner, 1000);
 
     //MOSTRAR PRIMERA VEZ VIDAS
     pantallaVidas = document.getElementById("pantallaVidas");
     pantallaVidas.value = parseInt(vidas);
+
 }
 
 function dibujarMapa() {
@@ -114,7 +123,8 @@ function moverPersonaje(bart_Y1, bart_X1) {
 
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
-
+    var aux2 = mapa[bart_Y1][bart_X1].classList.value.includes("momia");
+    console.log(matarMomia);
     console.log(mapa[bart_Y1][bart_X1]);
     // SI  NO ES CAMINO NI HUELLAS CHOCA
     if (aux && aux1) {
@@ -126,18 +136,31 @@ function moverPersonaje(bart_Y1, bart_X1) {
         //Incrementamos añadiendo las posiciones
         bart_Y = bart_Y1;
         bart_X = bart_X1;
+
+
+        // MATAR MOMIA
+        if (aux2 && matarMomia == true) {
+            mapa[bart_Y][bart_X].classList.replace("personaje", "momia");
+            mapa[skinner_Y][skinner_X].classList.remove("momia");
+            skinner_Y = 0;
+            skiner_X = 0;
+            moverMomia = false;
+            //QUITAMOS EL MOVIMIENTO DIRECTAMENTE
+            clearInterval(intervalFuncion);
+            console.log("Momia muerta");
+        }
         //Al avanzar comprobar choqueMomia y restar vida
         comprobarVidas(bart_Y1, bart_X1, "momia");
 
 
         //SI CONTIENE HUELLAS CAMBIAMOS LA HUELLA POR EL PERSONAJE EN CASO DE VOLVER SOBRE LAS HUELLAS
         if (!aux1) {
-            console.log("Huellas");
+            //  console.log("Huellas");
             mapa[bart_Y1][bart_X1].classList.replace("huellas", "personaje");
 
             //SINO ES CAMINO Y CAMBIAMOS EL CAMINO POR EL PERSONAJE PARA AVANZAR EL PERSONAJE
         } else {
-            console.log("Camino")
+            //  console.log("Camino")
             mapa[bart_Y1][bart_X1].classList.replace("camino", "personaje");
         }
     }
@@ -176,18 +199,36 @@ function moverSkinner() {
 function movimientoSkiner(skinner_Y1, skinner_X1) {
     var aux = !mapa[skinner_Y1][skinner_X1].classList.value.includes("camino");
     var aux1 = !mapa[skinner_Y1][skinner_X1].classList.value.includes("huellas");
+    var aux2 = mapa[skinner_Y1][skinner_X1].classList.value.includes("personaje");
 
+    if (moverMomia == true) {
+        if (aux && aux1) {
+            comprobarVidas(skinner_Y1, skinner_X1, "personaje");
+            //SINO CAMBIA MOMIA POR CAMINO
+        } else {
+            mapa[skinner_Y][skinner_X].classList.remove("momia");
+            skinner_Y = skinner_Y1;
+            skinner_X = skinner_X1;
+            mapa[skinner_Y][skinner_X].classList.add("momia");
 
-    if (aux && aux1) {
+            if (aux2) {
+                mapa[skinner_Y][skinner_X].classList.remove("personaje");
+                mapa[skinner_Y][skinner_X].classList.remove("personaje");
+            }
+        }
+
+    }
+    /* if (aux && aux1) {
         comprobarVidas(skinner_Y1, skinner_X1, "personaje");
         //SINO CAMBIA MOMIA POR CAMINO
     } else {
+
         mapa[skinner_Y][skinner_X].classList.remove("momia");
-        skinner_Y = skinner_Y1;
-        skinner_X = skinner_X1;
+        skinner_Y2 = skinner_Y1;
+        skinner_X2 = skinner_X1;
         mapa[skinner_Y][skinner_X].classList.add("momia");
     }
-
+*/
 }
 
 
@@ -196,7 +237,7 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
 function comprobarBloques() {
 
     let docBloques = document.getElementsByClassName("bloques");
-    var matar = false;
+
     let dataFila;
     let dataColumna;
 
@@ -240,8 +281,6 @@ function comprobarBloques() {
 
                         //AÑADIMOS BATIDO
                         docBloques[1].classList.replace("divRodeado", "tirachinas");
-
-
                     } // Si rodeamos las posiciones seleccionadas debajo aparecera el tirachinas que es igual a la llave
                     if (docBloques[66].classList.value.includes("divRodeado") &&
                         docBloques[67].classList.value.includes("divRodeado") &&
@@ -249,7 +288,6 @@ function comprobarBloques() {
                         docBloques[81].classList.value.includes("divRodeado") &&
                         docBloques[82].classList.value.includes("divRodeado") &&
                         docBloques[83].classList.value.includes("divRodeado")) {
-
                         //AÑADIMOS TIRACHINAS
                         docBloques[67].classList.replace("divRodeado", "batido");
                     }
@@ -274,6 +312,16 @@ function comprobarBloques() {
                         //AÑADIMOS PUNTOS
                         docBloques[43].classList.replace("divRodeado", "puntos");
                     }
+                    if (docBloques[33].classList.value.includes("divRodeado") &&
+                        docBloques[34].classList.value.includes("divRodeado") &&
+                        docBloques[35].classList.value.includes("divRodeado") &&
+                        docBloques[48].classList.value.includes("divRodeado") &&
+                        docBloques[49].classList.value.includes("divRodeado") &&
+                        docBloques[50].classList.value.includes("divRodeado")
+                    ) { //si estan rodeados cambiamos ese divrodeado por otra clase para que cambie
+
+                        docBloques[35].classList.replace("divRodeado", "momia");
+                    }
                     // comprobamos si los 6 bloques de cada columna estan rodeados 
                     if (docBloques[i].classList.value.includes("divRodeado") &&
                         docBloques[i + 1].classList.value.includes("divRodeado") &&
@@ -285,10 +333,21 @@ function comprobarBloques() {
 
                         docBloques[i + 1].classList.replace("divRodeado", "nelson");
                     }
+
                 }
             }
         }
     }
+
+    if (docBloques[1].classList.value.includes("tirachinas")) {
+        console.log("MATAR MOMIA ON");
+        matarMomia = true;
+    }
+    if (docBloques[35].classList.value.includes("momia")) {
+        console.log("Segunda momia ON");
+
+    }
+
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
         puntos = 1000;
@@ -320,13 +379,17 @@ function comprobarBloques() {
 function comprobarVidas(posicionY, posicionX, personaje) {
 
     var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
-    console.log("muertos");
+
     if (aux1 && vidas > 0) {
         vidas--;
         pantallaVidas.value = parseInt(vidas);
-        console.log("asfasdf");
+
     } else if (vidas == 0) {
-        alert("HAS PERDIDO LA PARTIDA");
+        let myNode = document.getElementById("mapa");
+        alert("GAME OVER");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
         dibujarMapa();
     }
 
