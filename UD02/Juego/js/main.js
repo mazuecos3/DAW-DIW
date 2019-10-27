@@ -1,9 +1,6 @@
 var bart_Y = 1;
 var bart_X = 9;
-var skinner_Y = 14;
-var skinner_X = 5;
-var skinner_Y2 = 6;
-var skinner_X2 = 8;
+
 var puntos = 0;
 var pantallaVidas;
 var pantallaPuntos;
@@ -14,8 +11,8 @@ var matarMomia = false;
 
 var intervalFuncion = setInterval(moverSkinner, 300);
 
-var momias = new Array();
-
+let skinner_Y;
+let skinner_X;
 
 
 //MAPA NIVEL INCIAL 1
@@ -124,8 +121,8 @@ function moverPersonaje(bart_Y1, bart_X1) {
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
     var aux2 = mapa[bart_Y1][bart_X1].classList.value.includes("momia");
-    console.log(matarMomia);
-    console.log(mapa[bart_Y1][bart_X1]);
+    // console.log(matarMomia);
+
     // SI  NO ES CAMINO NI HUELLAS CHOCA
     if (aux && aux1) {
         console.log("Choque Columna");
@@ -136,7 +133,6 @@ function moverPersonaje(bart_Y1, bart_X1) {
         //Incrementamos añadiendo las posiciones
         bart_Y = bart_Y1;
         bart_X = bart_X1;
-
 
         // MATAR MOMIA
         if (aux2 && matarMomia == true) {
@@ -171,8 +167,15 @@ function moverPersonaje(bart_Y1, bart_X1) {
 //MOVER SKINNER
 
 function moverSkinner() {
+    let momia = document.querySelectorAll(".momia");
 
-    if (momia = true) {
+    for (let i = 0; i < momia.length; i++) {
+
+        skinner_Y = parseInt(momia[i].getAttribute("data-fila"));
+        skinner_X = parseInt(momia[i].getAttribute("data-columna"));
+
+
+        console.log(momia);
         let movimientoRandom = Math.floor(Math.random() * 4);
         switch (movimientoRandom) {
 
@@ -200,12 +203,13 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
     var aux = !mapa[skinner_Y1][skinner_X1].classList.value.includes("camino");
     var aux1 = !mapa[skinner_Y1][skinner_X1].classList.value.includes("huellas");
     var aux2 = mapa[skinner_Y1][skinner_X1].classList.value.includes("personaje");
-
     if (moverMomia == true) {
         if (aux && aux1) {
             comprobarVidas(skinner_Y1, skinner_X1, "personaje");
             //SINO CAMBIA MOMIA POR CAMINO
         } else {
+
+
             mapa[skinner_Y][skinner_X].classList.remove("momia");
             skinner_Y = skinner_Y1;
             skinner_X = skinner_X1;
@@ -213,22 +217,11 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
 
             if (aux2) {
                 mapa[skinner_Y][skinner_X].classList.remove("personaje");
-                mapa[skinner_Y][skinner_X].classList.remove("personaje");
+
             }
         }
-
     }
-    /* if (aux && aux1) {
-        comprobarVidas(skinner_Y1, skinner_X1, "personaje");
-        //SINO CAMBIA MOMIA POR CAMINO
-    } else {
 
-        mapa[skinner_Y][skinner_X].classList.remove("momia");
-        skinner_Y2 = skinner_Y1;
-        skinner_X2 = skinner_X1;
-        mapa[skinner_Y][skinner_X].classList.add("momia");
-    }
-*/
 }
 
 
@@ -319,8 +312,11 @@ function comprobarBloques() {
                         docBloques[49].classList.value.includes("divRodeado") &&
                         docBloques[50].classList.value.includes("divRodeado")
                     ) { //si estan rodeados cambiamos ese divrodeado por otra clase para que cambie
+                        if (!docBloques[35].classList.value.includes("momiaAbierta")) {
+                            docBloques[35].classList.replace("divRodeado", "momia");
+                            docBloques[35].classList.add("momiaAbierta");
 
-                        docBloques[35].classList.replace("divRodeado", "momia");
+                        }
                     }
                     // comprobamos si los 6 bloques de cada columna estan rodeados 
                     if (docBloques[i].classList.value.includes("divRodeado") &&
@@ -338,15 +334,13 @@ function comprobarBloques() {
             }
         }
     }
-
+    // PARA MATAR A LA MOMIA SKINNER
     if (docBloques[1].classList.value.includes("tirachinas")) {
         console.log("MATAR MOMIA ON");
         matarMomia = true;
     }
-    if (docBloques[35].classList.value.includes("momia")) {
-        console.log("Segunda momia ON");
 
-    }
+
 
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
