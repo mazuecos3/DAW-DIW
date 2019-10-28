@@ -51,6 +51,10 @@ function listo() {
 }
 
 function dibujarMapa() {
+  //  document.querySelector("#mapa").style.display="none";
+
+    document.querySelector("#mapa").innerHTML="";
+    console.log(document.querySelector("#mapa"));
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 23; j++) {
             let newDiv = document.createElement("div");
@@ -80,9 +84,11 @@ function dibujarMapa() {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
-            document.querySelector(".mapa").appendChild(newDiv);
+            document.querySelector("#mapa").appendChild(newDiv); 
         }
     }
+    //document.querySelector("#mapa").style.display="grid";
+
 }
 
 function cogerTecla(e) {
@@ -138,9 +144,6 @@ function moverPersonaje(bart_Y1, bart_X1) {
             mapa[skinner_Y][skinner_X].classList.remove("momia");
             skinner_Y = 0;
             skiner_X = 0;
-            moverMomia = false;
-            //QUITAMOS EL MOVIMIENTO DIRECTAMENTE
-            clearInterval(intervalFuncion);
             console.log("Momia muerta");
         }
         //Al avanzar comprobar choqueMomia y restar vida
@@ -369,9 +372,12 @@ function comprobarBloques() {
 
             // RESETEAR MAPA 
             let myNode = document.getElementById("mapa");
-            while (myNode.firstChild) {
+            /*while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
-            }
+            }*/
+            console.log(myNode); 
+            myNode.innerHTML="";
+            
             dibujarMapa();
         }
     }
