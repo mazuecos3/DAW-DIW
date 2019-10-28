@@ -51,7 +51,6 @@ function listo() {
 }
 
 function dibujarMapa() {
-
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 23; j++) {
             let newDiv = document.createElement("div");
@@ -81,7 +80,6 @@ function dibujarMapa() {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
-
             document.querySelector(".mapa").appendChild(newDiv);
         }
     }
@@ -175,7 +173,7 @@ function moverSkinner() {
         skinner_X = parseInt(momia[i].getAttribute("data-columna"));
 
 
-        console.log(momia);
+        //  console.log(momia);
         let movimientoRandom = Math.floor(Math.random() * 4);
         switch (movimientoRandom) {
 
@@ -203,22 +201,30 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
     var aux = !mapa[skinner_Y1][skinner_X1].classList.value.includes("camino");
     var aux1 = !mapa[skinner_Y1][skinner_X1].classList.value.includes("huellas");
     var aux2 = mapa[skinner_Y1][skinner_X1].classList.value.includes("personaje");
+    var aux3 = mapa[skinner_Y1][skinner_X1].classList.value.includes("momia");
     if (moverMomia == true) {
         if (aux && aux1) {
             comprobarVidas(skinner_Y1, skinner_X1, "personaje");
             //SINO CAMBIA MOMIA POR CAMINO
         } else {
 
+            if (aux3) {
+                console.log("MOMIA");
+            } else {
+                mapa[skinner_Y][skinner_X].classList.remove("momia");
+                skinner_Y = skinner_Y1;
+                skinner_X = skinner_X1;
+                mapa[skinner_Y][skinner_X].classList.add("momia");
 
-            mapa[skinner_Y][skinner_X].classList.remove("momia");
-            skinner_Y = skinner_Y1;
-            skinner_X = skinner_X1;
-            mapa[skinner_Y][skinner_X].classList.add("momia");
 
-            if (aux2) {
-                mapa[skinner_Y][skinner_X].classList.remove("personaje");
 
+                if (aux2) {
+                    mapa[skinner_Y][skinner_X].classList.remove("personaje");
+
+                }
             }
+
+
         }
     }
 
@@ -311,7 +317,10 @@ function comprobarBloques() {
                         docBloques[48].classList.value.includes("divRodeado") &&
                         docBloques[49].classList.value.includes("divRodeado") &&
                         docBloques[50].classList.value.includes("divRodeado")
-                    ) { //si estan rodeados cambiamos ese divrodeado por otra clase para que cambie
+                    ) {
+                        //si estan rodeados cambiamos ese divrodeado por otra clase para que cambie y añadimos otra momia
+                        // Luego vovlvera a comprobar si están divRodeados y como si que lo estarán al moverse la momia aparecerá nelson "Siguiente condicion"
+
                         if (!docBloques[35].classList.value.includes("momiaAbierta")) {
                             docBloques[35].classList.replace("divRodeado", "momia");
                             docBloques[35].classList.add("momiaAbierta");
@@ -339,8 +348,6 @@ function comprobarBloques() {
         console.log("MATAR MOMIA ON");
         matarMomia = true;
     }
-
-
 
     // SUMAMOS PUNTOS AL DESBLOQUEAR LOS BLOQUES QUE CONTIENEN EL DINERO
     if (docBloques[7].classList.value.includes("puntos") || docBloques[43].classList.value.includes("puntos")) {
