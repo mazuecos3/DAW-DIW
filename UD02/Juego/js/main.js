@@ -1,6 +1,7 @@
 var bart_Y = 1;
 var bart_X = 9;
-
+var nivel = 1;
+var nivelTexto;
 var puntos = 0;
 var pantallaVidas;
 var pantallaPuntos;
@@ -14,10 +15,9 @@ var intervalFuncion = setInterval(moverSkinner, 300);
 let skinner_Y;
 let skinner_X;
 
-
 //MAPA NIVEL INCIAL 1
 mapa = [
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 5, 6, 5, 9, 7, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
@@ -40,7 +40,6 @@ let mapaAux = copyArray(mapa);
 window.onload = function() {
     listo();
 };
-
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
@@ -50,10 +49,8 @@ function listo() {
     pantallaVidas.value = parseInt(vidas);
 
 }
-
 function dibujarMapa() {
   //  document.querySelector("#mapa").style.display="none";
-
     document.querySelector("#mapa").innerHTML="";
     console.log(document.querySelector("#mapa"));
     for (let i = 0; i < 16; i++) {
@@ -81,7 +78,16 @@ function dibujarMapa() {
             } else if (mapa[i][j] == 4) {
                 newDiv.classList.add("huellas");
                 mapa[i][j] = newDiv;
-            } else if (mapa[i][j] == 9) {
+            } else if (mapa[i][j] == 5) {
+                newDiv.classList.add("l");
+                mapa[i][j] = newDiv;
+            }else if (mapa[i][j] == 6) {
+                newDiv.classList.add("v");
+                mapa[i][j] = newDiv;
+            }else if (mapa[i][j] == 7) {
+                newDiv.classList.add("nivel1");
+                mapa[i][j] = newDiv;
+            }else if (mapa[i][j] == 9) {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
@@ -89,9 +95,7 @@ function dibujarMapa() {
         }
     }
     //document.querySelector("#mapa").style.display="grid";
-
 }
-
 function cogerTecla(e) {
 
     var teclaPulsada = e.keyCode;
@@ -117,17 +121,17 @@ function cogerTecla(e) {
             moverPersonaje(bart_Y + 1, bart_X);
             break;
     }
-
 }
 //Movimiento Personaje
-
 function moverPersonaje(bart_Y1, bart_X1) {
-
+    
+   
+   
+   
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
     var aux2 = mapa[bart_Y1][bart_X1].classList.value.includes("momia");
     // console.log(matarMomia);
-
     // SI  NO ES CAMINO NI HUELLAS CHOCA
     if (aux && aux1) {
         console.log("Choque Columna");
@@ -163,7 +167,6 @@ function moverPersonaje(bart_Y1, bart_X1) {
         }
     }
     comprobarBloques();
-
 }
 
 //MOVER SKINNER
@@ -172,28 +175,20 @@ function moverSkinner() {
     let momia = document.querySelectorAll(".momia");
 
     for (let i = 0; i < momia.length; i++) {
-
         skinner_Y = parseInt(momia[i].getAttribute("data-fila"));
         skinner_X = parseInt(momia[i].getAttribute("data-columna"));
-
-
         //  console.log(momia);
         let movimientoRandom = Math.floor(Math.random() * 4);
         switch (movimientoRandom) {
-
             case 0:
                 movimientoSkiner(skinner_Y, skinner_X - 1);
-
                 break;
-
             case 1:
                 movimientoSkiner(skinner_Y - 1, skinner_X);
                 break;
-
             case 2:
                 movimientoSkiner(skinner_Y, skinner_X + 1);
                 break;
-
             case 3:
                 movimientoSkiner(skinner_Y + 1, skinner_X);
                 break;
@@ -213,15 +208,12 @@ function movimientoSkiner(skinner_Y1, skinner_X1) {
         } else {
 
             if (aux3) {
-                console.log("MOMIA");
+                //console.log("CHOQUE MOMIA");
             } else {
                 mapa[skinner_Y][skinner_X].classList.remove("momia");
                 skinner_Y = skinner_Y1;
                 skinner_X = skinner_X1;
                 mapa[skinner_Y][skinner_X].classList.add("momia");
-
-
-
                 if (aux2) {
                     mapa[skinner_Y][skinner_X].classList.remove("personaje");
 
@@ -369,29 +361,23 @@ function comprobarBloques() {
         mapa[1][9].classList.add("salida");
         //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
         if (mapa[1][9].classList.value.includes("personaje")) {
-            alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
-
+          
             // RESETEAR MAPA 
-            // let myNode = document.getElementById("mapa");
-
+            subirNivel();
             reiniciarMapa();
-            /*while (myNode.firstChild) {
-                myNode.removeChild(myNode.firstChild);
-            }*/
-            // console.log(myNode); 
-            // myNode.innerHTML="";
-            
-            // dibujarMapa();
+          
+           
         }
     }
 }
 
 function reiniciarMapa() {
+   
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 23; j++) {
-
+            //CON ESTO DEJAMOS EL MAPA VACIO
             mapa[i][j].classList = [];
-
+            //VOLVEMOS A ASIGNAR AL MAPA TODAS LAS CLASES
             if (mapaAux[i][j] == 0) {
                 mapa[i][j].classList.add("camino");
             } else if (mapaAux[i][j] == 1) {
@@ -403,14 +389,20 @@ function reiniciarMapa() {
                 mapa[i][j].classList.add("momia");
             } else if (mapaAux[i][j] == 4) {
                 mapa[i][j].classList.add("huellas");
+            }else if (mapaAux[i][j] == 5) {
+                mapa[i][j].classList.add("l");
+            }else if (mapaAux[i][j] == 6) {
+                mapa[i][j].classList.add("v");
+            }else if (mapaAux[i][j] == 7) {
+                mapa[i][j].classList.add(nivelTexto);
             } else if (mapaAux[i][j] == 9) {
                 mapa[i][j].classList.add("fondo");
             }
 
         }
     }
+    
 }
-
 function copyArray(arr) {
     let res = [];
     for (let i = 0; i < arr.length; i++) {
@@ -421,8 +413,6 @@ function copyArray(arr) {
     }
     return res;
 }
-
-
 function comprobarVidas(posicionY, posicionX, personaje) {
 
     var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
@@ -432,10 +422,26 @@ function comprobarVidas(posicionY, posicionX, personaje) {
         pantallaVidas.value = parseInt(vidas);
 
     } else if (vidas == 0) {
-       
         alert("GAME OVER");
        
        reiniciarMapa();
+       vidas = 5;
+       pantallaVidas.value = parseInt(vidas);
+        bart_Y = 1;
+        bart_X = 9;
+      
     }
 
+}
+function subirNivel() {
+    if (nivel == 5) {
+        alert("HAS COMPLETADO TODOS LOS NIVELES !!! ERES UN TITÁN");
+        nivel = 1;
+    } else {
+        nivel++;
+        nivelTexto = "nivel" + nivel;
+        alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
+    }
+   
+   
 }

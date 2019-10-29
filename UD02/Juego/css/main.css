@@ -131,3 +131,47 @@ input[type=text] {
     border: 0;
     border-radius: 15px;
 }
+
+.v{
+    background-image: url("../images/v.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.l{
+    background-image: url("../images/l.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+.nivel1{
+    background-image: url("../images/nivel1.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+.nivel2{
+    background-image: url("../images/nivel2.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+.nivel3{
+    background-image: url("../images/nivel3.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+.nivel4{
+    background-image: url("../images/nivel4.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+.nivel5{
+    background-image: url("../images/nivel5.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
