@@ -25,7 +25,7 @@ mapa = [
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 9],
     [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
@@ -34,7 +34,8 @@ mapa = [
     [9, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
-
+//REVISAR
+let mapaAux = copyArray(mapa);
 
 window.onload = function() {
     listo();
@@ -371,17 +372,56 @@ function comprobarBloques() {
             alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
 
             // RESETEAR MAPA 
-            let myNode = document.getElementById("mapa");
+            // let myNode = document.getElementById("mapa");
+
+            reiniciarMapa();
             /*while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
             }*/
-            console.log(myNode); 
-            myNode.innerHTML="";
+            // console.log(myNode); 
+            // myNode.innerHTML="";
             
-            dibujarMapa();
+            // dibujarMapa();
         }
     }
 }
+
+function reiniciarMapa() {
+    for (let i = 0; i < 16; i++) {
+        for (let j = 0; j < 23; j++) {
+
+            mapa[i][j].classList = [];
+
+            if (mapaAux[i][j] == 0) {
+                mapa[i][j].classList.add("camino");
+            } else if (mapaAux[i][j] == 1) {
+                mapa[i][j].classList.add("bloques");
+            } else if (mapaAux[i][j] == 2) {
+                mapa[i][j].classList.add("personaje");
+            } else if (mapaAux[i][j] == 3) {
+                mapa[i][j].classList.add("camino");
+                mapa[i][j].classList.add("momia");
+            } else if (mapaAux[i][j] == 4) {
+                mapa[i][j].classList.add("huellas");
+            } else if (mapaAux[i][j] == 9) {
+                mapa[i][j].classList.add("fondo");
+            }
+
+        }
+    }
+}
+
+function copyArray(arr) {
+    let res = [];
+    for (let i = 0; i < arr.length; i++) {
+        res[i] = [];
+        for (let j = 0; j < arr[0].length; j++) {
+            res[i][j] = arr[i][j];
+        }
+    }
+    return res;
+}
+
 
 function comprobarVidas(posicionY, posicionX, personaje) {
 
@@ -392,12 +432,10 @@ function comprobarVidas(posicionY, posicionX, personaje) {
         pantallaVidas.value = parseInt(vidas);
 
     } else if (vidas == 0) {
-        let myNode = document.getElementById("mapa");
+       
         alert("GAME OVER");
-        while (myNode.firstChild) {
-            myNode.removeChild(myNode.firstChild);
-        }
-        dibujarMapa();
+       
+       reiniciarMapa();
     }
 
 }
