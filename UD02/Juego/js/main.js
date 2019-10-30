@@ -96,10 +96,11 @@ function dibujarMapa() {
             document.querySelector("#mapa").appendChild(newDiv);
         }
     }
-    
-        
+
+
     //document.querySelector("#mapa").style.display="grid";
 }
+
 
 function cogerTecla(e) {
 
@@ -151,6 +152,7 @@ function moverPersonaje(bart_Y1, bart_X1) {
             skinner_Y = 0;
             skiner_X = 0;
             console.log("Momia muerta");
+            matarMomia = false;
         }
         //Al avanzar comprobar choqueMomia y restar vida
         comprobarVidas(bart_Y1, bart_X1, "momia");
@@ -342,7 +344,7 @@ function comprobarBloques() {
     }
     // PARA MATAR A LA MOMIA SKINNER
     if (docBloques[1].classList.value.includes("tirachinas")) {
-        console.log("MATAR MOMIA ON");
+        //  console.log("MATAR MOMIA ON");
         matarMomia = true;
     }
 
@@ -366,11 +368,13 @@ function comprobarBloques() {
             // RESETEAR MAPA 
             subirNivel();
             reiniciarMapa();
-
+            añadirMomiasNivel();
 
         }
     }
+
 }
+
 function reiniciarMapa() {
 
     for (let i = 0; i < 16; i++) {
@@ -401,6 +405,7 @@ function reiniciarMapa() {
         }
     }
 }
+
 function copyArray(arr) {
     let res = [];
     for (let i = 0; i < arr.length; i++) {
@@ -411,6 +416,7 @@ function copyArray(arr) {
     }
     return res;
 }
+
 function comprobarVidas(posicionY, posicionX, personaje) {
 
     var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
@@ -435,6 +441,7 @@ function comprobarVidas(posicionY, posicionX, personaje) {
     }
 
 }
+
 function subirNivel() {
     if (nivel == 5) {
         alert("HAS COMPLETADO TODOS LOS NIVELES !!! ERES UN TITÁN");
@@ -445,7 +452,29 @@ function subirNivel() {
         nivel++;
         nivelTexto = "nivel" + nivel;
 
-        console.log(nivel);  
+        console.log(nivel);
         alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
     }
+}
+
+function añadirMomiasNivel() {
+
+    switch (nivel) {
+        case 2:
+            mapa[8][8].classList.add("momia");
+            break;
+        case 3:
+            mapa[11][13].classList.add("momia");
+            break;
+        case 4:
+            mapa[11][11].classList.add("momia");
+            break;
+        case 5:
+            mapa[2][20].classList.add("momia");
+            break;
+
+        default:
+            break;
+    }
+
 }
