@@ -96,6 +96,8 @@ function dibujarMapa() {
             document.querySelector("#mapa").appendChild(newDiv);
         }
     }
+    
+        
     //document.querySelector("#mapa").style.display="grid";
 }
 
@@ -127,10 +129,6 @@ function cogerTecla(e) {
 }
 //Movimiento Personaje
 function moverPersonaje(bart_Y1, bart_X1) {
-
-
-
-
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
     var aux2 = mapa[bart_Y1][bart_X1].classList.value.includes("momia");
@@ -373,7 +371,6 @@ function comprobarBloques() {
         }
     }
 }
-
 function reiniciarMapa() {
 
     for (let i = 0; i < 16; i++) {
@@ -401,12 +398,9 @@ function reiniciarMapa() {
             } else if (mapaAux[i][j] == 9) {
                 mapa[i][j].classList.add("fondo");
             }
-
         }
     }
-
 }
-
 function copyArray(arr) {
     let res = [];
     for (let i = 0; i < arr.length; i++) {
@@ -417,7 +411,6 @@ function copyArray(arr) {
     }
     return res;
 }
-
 function comprobarVidas(posicionY, posicionX, personaje) {
 
     var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
@@ -442,7 +435,6 @@ function comprobarVidas(posicionY, posicionX, personaje) {
     }
 
 }
-
 function subirNivel() {
     if (nivel == 5) {
         alert("HAS COMPLETADO TODOS LOS NIVELES !!! ERES UN TITÁN");
@@ -452,10 +444,8 @@ function subirNivel() {
 
         nivel++;
         nivelTexto = "nivel" + nivel;
+
+        console.log(nivel);  
         alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
-
-
     }
-
-
 }
