@@ -40,6 +40,7 @@ let mapaAux = copyArray(mapa);
 window.onload = function() {
     listo();
 };
+
 function listo() {
     dibujarMapa();
     document.addEventListener("keydown", cogerTecla);
@@ -49,9 +50,10 @@ function listo() {
     pantallaVidas.value = parseInt(vidas);
 
 }
+
 function dibujarMapa() {
-  //  document.querySelector("#mapa").style.display="none";
-    document.querySelector("#mapa").innerHTML="";
+    //  document.querySelector("#mapa").style.display="none";
+    document.querySelector("#mapa").innerHTML = "";
     console.log(document.querySelector("#mapa"));
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 23; j++) {
@@ -81,21 +83,22 @@ function dibujarMapa() {
             } else if (mapa[i][j] == 5) {
                 newDiv.classList.add("l");
                 mapa[i][j] = newDiv;
-            }else if (mapa[i][j] == 6) {
+            } else if (mapa[i][j] == 6) {
                 newDiv.classList.add("v");
                 mapa[i][j] = newDiv;
-            }else if (mapa[i][j] == 7) {
+            } else if (mapa[i][j] == 7) {
                 newDiv.classList.add("nivel1");
                 mapa[i][j] = newDiv;
-            }else if (mapa[i][j] == 9) {
+            } else if (mapa[i][j] == 9) {
                 newDiv.classList.add("fondo");
                 mapa[i][j] = newDiv;
             }
-            document.querySelector("#mapa").appendChild(newDiv); 
+            document.querySelector("#mapa").appendChild(newDiv);
         }
     }
     //document.querySelector("#mapa").style.display="grid";
 }
+
 function cogerTecla(e) {
 
     var teclaPulsada = e.keyCode;
@@ -124,10 +127,10 @@ function cogerTecla(e) {
 }
 //Movimiento Personaje
 function moverPersonaje(bart_Y1, bart_X1) {
-    
-   
-   
-   
+
+
+
+
     var aux = !mapa[bart_Y1][bart_X1].classList.value.includes("camino");
     var aux1 = !mapa[bart_Y1][bart_X1].classList.value.includes("huellas");
     var aux2 = mapa[bart_Y1][bart_X1].classList.value.includes("momia");
@@ -361,18 +364,18 @@ function comprobarBloques() {
         mapa[1][9].classList.add("salida");
         //PASAR POR LA PUERTA AL SIGUENTE NIVEL QUE SALGA UNA ALERTA
         if (mapa[1][9].classList.value.includes("personaje")) {
-          
+
             // RESETEAR MAPA 
             subirNivel();
             reiniciarMapa();
-          
-           
+
+
         }
     }
 }
 
 function reiniciarMapa() {
-   
+
     for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 23; j++) {
             //CON ESTO DEJAMOS EL MAPA VACIO
@@ -389,11 +392,11 @@ function reiniciarMapa() {
                 mapa[i][j].classList.add("momia");
             } else if (mapaAux[i][j] == 4) {
                 mapa[i][j].classList.add("huellas");
-            }else if (mapaAux[i][j] == 5) {
+            } else if (mapaAux[i][j] == 5) {
                 mapa[i][j].classList.add("l");
-            }else if (mapaAux[i][j] == 6) {
+            } else if (mapaAux[i][j] == 6) {
                 mapa[i][j].classList.add("v");
-            }else if (mapaAux[i][j] == 7) {
+            } else if (mapaAux[i][j] == 7) {
                 mapa[i][j].classList.add(nivelTexto);
             } else if (mapaAux[i][j] == 9) {
                 mapa[i][j].classList.add("fondo");
@@ -401,8 +404,9 @@ function reiniciarMapa() {
 
         }
     }
-    
+
 }
+
 function copyArray(arr) {
     let res = [];
     for (let i = 0; i < arr.length; i++) {
@@ -413,6 +417,7 @@ function copyArray(arr) {
     }
     return res;
 }
+
 function comprobarVidas(posicionY, posicionX, personaje) {
 
     var aux1 = mapa[posicionY][posicionX].classList.value.includes(personaje);
@@ -422,26 +427,35 @@ function comprobarVidas(posicionY, posicionX, personaje) {
         pantallaVidas.value = parseInt(vidas);
 
     } else if (vidas == 0) {
+        //CUANDO SE ACABE LA PARTIDA DEVOLVER EL NIVEL AL 1 
         alert("GAME OVER");
-       
-       reiniciarMapa();
-       vidas = 5;
-       pantallaVidas.value = parseInt(vidas);
+        nivel = 1;
+        nivelTexto = "nivel1";
+        //REINICIAR MAPA
+        reiniciarMapa();
+        //CUANDO SE ACABE LA PARITDA DEVOLVER ALS VIDAS A 5
+        vidas = 5;
+        pantallaVidas.value = parseInt(vidas);
         bart_Y = 1;
         bart_X = 9;
-      
+
     }
 
 }
+
 function subirNivel() {
     if (nivel == 5) {
         alert("HAS COMPLETADO TODOS LOS NIVELES !!! ERES UN TITÁN");
         nivel = 1;
+        nivelTexto = "nivel1";
     } else {
+
         nivel++;
         nivelTexto = "nivel" + nivel;
         alert("VICTORIA!!! PASAS AL SIGUIENTE NIVEL");
+
+
     }
-   
-   
+
+
 }
