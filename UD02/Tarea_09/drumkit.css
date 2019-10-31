@@ -1,0 +1,35 @@
+body {
+    background-image: url("temmo.jpg");
+    background-size: 100%;
+}
+
+.keys {
+    display: grid;
+    margin-left: 400px;
+    grid-gap: 40px;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 200px);
+    font-weight: bold;
+    height: 100%;
+    text-shadow: 5px 5px 5px black;
+}
+
+.key {
+    text-align: center;
+    padding: 20px;
+    border: 10px solid black;
+    background-color: white;
+    opacity: 0.7;
+}
+
+.sound {
+    font-size: 2em;
+    color: yellow;
+    text-transform: uppercase;
+}
+
+kbd {
+    color: white;
+    font-size: 5em;
+}
