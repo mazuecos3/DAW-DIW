@@ -1,9 +1,9 @@
-body{
-    background-color:grey;
+body {
+    background-color: grey;
     padding: 3rem;
 }
 
-container{
+.container {
     margin: 1rem;
     display: grid;
     /* 
@@ -13,23 +13,21 @@ container{
    */
 }
 
-button{
+button {
     border: 3px solid darkgrey;
 }
 
-
-box{
+.box {
     background-color: #1e0;
-    border:3px solid #AABBAA;
+    border: 3px solid #AABBAA;
     /* 
- 
-    ^(;,;)^ : Fragmento perdido
+
 
    */
     border-radius: 10px;
 }
 
-.evoluciona{
+.evoluciona {
     background-color: #e10;
     /* 
  
@@ -38,16 +36,16 @@ box{
    */
 }
 
-.desevoluciona{
+.desevoluciona {
     background-color: #10e;
-        /* 
+    /* 
  
     ^(;,;)^ : Fragmento perdido
 
    */
 }
 
-.ultimate{
+.ultimate {
     background-color: #441155;
     /* 
  
@@ -56,7 +54,7 @@ box{
    */
 }
 
-.ultimate:hover{
+.ultimate:hover {
     /* 
  
     ^(;,;)^ : Fragmento perdido
