@@ -1,0 +1,46 @@
+/*LE AÑADIMOS BORDE PUNTEADO A LA SECTION DEL HTML Y UN BORDER RAIDUS PEQUEÑO*/
+
+section {
+    border: 1px dotted black;
+    border-radius: 5px;
+}
+
+
+/*AÑADIMOS LA IMAGEN CHULU COMO CONTENIDO Y LA HACEMOS PEQUEÑA*/
+
+.caja {
+    content: url(cthulhu.svg);
+    width: 30px;
+    height: 30px;
+}
+
+
+/*TIPOS DE TRANSICION CADA UNA TIENE SUS ATRIBUTOS, UNAS COMIENZAN MAS RAPIDAS QUE OTRAS O AL REVES, O POR LA MITAD */
+
+.linear {
+    transition: transform linear 3s;
+}
+
+.ease-in {
+    transition: transform ease-in 3s;
+}
+
+.ease-out {
+    transition: transform ease-out 3s;
+}
+
+.ease {
+    transition: transform ease 3s;
+}
+
+.ease-in-out {
+    transition: transform ease-in-out 3s;
+}
+
+
+/*Preguntar Angel porque al poner % no es lo mismo*/
+
+.movimiento {
+    transform: translateX(1448px);
+    /*transform: translateX(90%);*/
+}
