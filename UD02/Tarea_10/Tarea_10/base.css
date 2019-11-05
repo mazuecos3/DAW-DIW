@@ -41,6 +41,6 @@ section {
 /*Preguntar Angel porque al poner % no es lo mismo*/
 
 .movimiento {
-    transform: translateX(1448px);
+    transform: translateX(1870px);
     /*transform: translateX(90%);*/
 }
