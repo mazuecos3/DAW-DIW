@@ -9,16 +9,24 @@ function init() {
 
 */
 
-
-
 function movimiento() { document.querySelector("button").addEventListener("click", createDiv); }
 
 function createDiv() {
 
     let newDiv = document.createElement("div");
     let clase = newDiv.classList.add("box");
+    document.querySelector("container").appendChild(newDiv);
+    newDiv.addEventListener("click", evolucion1);
 
-    console.log(newDiv);
+}
 
+function evolucion1() {
 
+    this.classList.add("evoluciona");
+    this.addEventListener("click", evolucion2);
+}
+
+function evolucion2() {
+
+    this.classList.add("ultimate");
 }

@@ -6,53 +6,49 @@ body {
 .container {
     margin: 1rem;
     display: grid;
-    /* 
- 
-    ^(;,;)^ : Fragmento perdido
-
-   */
 }
 
 button {
     border: 3px solid darkgrey;
 }
 
+
+/*Al crear el div aparece esta clase*/
+
 .box {
     background-color: #1e0;
     border: 3px solid #AABBAA;
-    /* 
-
-
-   */
+    height: 100px;
+    width: 100px;
+    transition: transform 1s;
     border-radius: 10px;
 }
 
+
+/*Al hacerc ckick se mueve a la derecha y cambia el background a rojo*/
+
 .evoluciona {
     background-color: #e10;
-    /* 
- 
-    ^(;,;)^ : Fragmento perdido
-
-   */
+    transform: translateX(100px);
 }
+
+
+/**/
 
 .desevoluciona {
     background-color: #10e;
-    /* 
- 
-    ^(;,;)^ : Fragmento perdido
-
-   */
 }
+
+
+/*Al clickar aparece chulu*/
 
 .ultimate {
     background-color: #441155;
-    /* 
- 
-    ^(;,;)^ : Fragmento perdido
-
-   */
+    content: url("cthulhu.svg");
 }
+
+
+/*Al pasar por encima se hace un pelin más grnade el chulu*/
 
 .ultimate:hover {
     /* 
