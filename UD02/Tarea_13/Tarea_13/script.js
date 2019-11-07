@@ -1,10 +1,14 @@
 window.onload = init;
 
+let movimientoRotar = false;
+let movimientoRebotar = false;
+/*Keyframe rotar que gire desde 0 a 360 grados*/
 function init() {
     movimiento();
     eventoRebotar();
     eventoRotar();
 }
+
 /* 
  
     ^(;,;)^ : Fragmento perdido
@@ -19,13 +23,13 @@ function createDiv() {
 
     let newDiv = document.createElement("box");
     let contadorDiv = document.querySelectorAll("box").length;
-     
+
     //MAXIMO DIVS TIPO BOX
-    if (contadorDiv< 20) {
+    if (contadorDiv < 20) {
         document.querySelector("container").appendChild(newDiv);
         newDiv.addEventListener("click", evolucion1);
     }
-    
+
 }
 //Añade la clase evolucionada y también añade evento clickar para que quite la evolución.
 function evolucion1() {
@@ -37,30 +41,33 @@ function evolucion1() {
 //Añade la clase desevolución(Quita efectos) y el evento click que llama a la evolucion2 
 function desvoluciona() {
 
-    this.classList.replace("evoluciona","desevoluciona");
+    this.classList.replace("evoluciona", "desevoluciona");
     this.addEventListener("click", evolucion2);
     console.log("desevolucion");
 }
 //Convierte a chulu ultimate!!!!!!!!! 
 function evolucion2() {
-    this.classList.replace("desevoluciona","ultimate");
+    this.classList.replace("desevoluciona", "ultimate");
     console.log("Ultimate");
-   
+
 }
 
 
 //Añadir evento click y funcion rotar 
 function eventoRotar() {
-     document.getElementById("uno").addEventListener("click", rotar); 
-    }
-function rotar() {   
-        console.log("prueba");
-    }
-function eventoRebotar() {
-        document.getElementById("dos").addEventListener("click", rebotar); 
-    }
-function rebotar() {   
+
+    document.getElementById("uno").addEventListener("click", rotar);
+    console.log(movimientoRotar);
+}
+
+function rotar() {
     console.log("prueba");
-    }
+}
 
+function eventoRebotar() {
+    document.getElementById("dos").addEventListener("click", rebotar);
+}
 
+function rebotar() {
+    console.log("prueba");
+}
