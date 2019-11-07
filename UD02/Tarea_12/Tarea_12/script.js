@@ -13,8 +13,8 @@ function movimiento() { document.querySelector("button").addEventListener("click
 
 function createDiv() {
 
-    let newDiv = document.createElement("div");
-    let clase = newDiv.classList.add("box");
+    let newDiv = document.createElement("box");
+    newDiv.classList.add("box");
     document.querySelector("container").appendChild(newDiv);
     newDiv.addEventListener("click", evolucion1);
 

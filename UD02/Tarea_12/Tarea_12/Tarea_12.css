@@ -3,9 +3,11 @@ body {
     padding: 3rem;
 }
 
-.container {
+container {
     margin: 1rem;
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 button {
@@ -15,7 +17,7 @@ button {
 
 /*Al crear el div aparece esta clase*/
 
-.box {
+box {
     background-color: #1e0;
     border: 3px solid #AABBAA;
     height: 100px;
@@ -54,7 +56,9 @@ button {
 .ultimate:hover {
     /* 
  
-    ^(;,;)^ : Fragmento perdido
+     transform:scale(1.20);
 
    */
+
+  
 }
