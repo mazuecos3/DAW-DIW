@@ -12,13 +12,12 @@ function init() {
 function movimiento() { document.querySelector("button").addEventListener("click", createDiv); }
 
 //creamos elementos tipo box y de un tamaño de no más de 20 
-// y le añadimos la clase box y se le añade el evento click que hace evolucionar.
+// Se le añade el evento click que hace evolucionar.
 function createDiv() {
 
     let newDiv = document.createElement("box");
     let contadorDiv = document.querySelectorAll("box").length;
-    newDiv.classList.add("box");
-   
+     
     //MAXIMO DIVS TIPO BOX
     if (contadorDiv< 20) {
         document.querySelector("container").appendChild(newDiv);
