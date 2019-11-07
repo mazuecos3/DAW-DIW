@@ -29,6 +29,7 @@ button {
 
 .evoluciona {
     background-color: #e10;
+    /*Si fuera hacia debajo sería translateY*/
     transform: translateX(100px);
 }
 
