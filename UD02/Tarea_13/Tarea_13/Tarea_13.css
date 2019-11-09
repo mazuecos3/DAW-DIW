@@ -6,7 +6,7 @@ body {
 .top {
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: 250px 100px 100px;
+    grid-template-columns: 250px 100px 100px 100px;
 }
 
 button {
@@ -22,6 +22,12 @@ button {
 
 #dos {
     content: url("rebote.png");
+    width: 100px;
+    height: 100px;
+}
+
+#tres {
+    content: url("stop.png");
     width: 100px;
     height: 100px;
 }

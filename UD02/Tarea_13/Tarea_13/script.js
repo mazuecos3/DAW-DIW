@@ -2,11 +2,13 @@ window.onload = init;
 
 let movimientoRotar = false;
 let movimientoRebotar = false;
+let movimientoParar = false;
 /*Keyframe rotar que gire desde 0 a 360 grados*/
 function init() {
     movimiento();
     eventoRebotar();
     eventoRotar();
+    pararTransicion();
 }
 
 function movimiento() { document.querySelector("button").addEventListener("click", createDiv); }
@@ -30,7 +32,7 @@ function evolucion1() {
 
     this.classList.add("evoluciona");
     this.addEventListener("click", desvoluciona);
-    //console.log("Evolucion1");
+
 }
 //Añade la clase desevolución(Quita efectos) y el evento click que llama a la evolucion2 
 function desvoluciona() {
@@ -45,14 +47,21 @@ function evolucion2() {
         this.classList.replace("desevoluciona", "ultimate");
     }
 
-    //console.log("Ultimate");
     if (this.classList.value.includes("ultimate") && movimientoRotar) {
         this.addEventListener("click", rotar);
     }
     if (this.classList.value.includes("ultimate") && movimientoRebotar) {
         this.addEventListener("click", rebotar);
     }
-
+    //PARAR TRANSICION
+    if (movimientoParar && this.classList.value.includes("rotar")) {
+        this.classList.remove("rotar");
+        movimientoParar = false;
+    }
+    if (movimientoParar && this.classList.value.includes("rebotar")) {
+        this.classList.remove("rebotar");
+        movimientoParar = false;
+    }
 }
 
 //Añadir evento click y funcion rotar 
@@ -94,4 +103,14 @@ function rebotar() {
         movimientoRebotar = false;
     }
 
+}
+//Añadir evento click y funcion pararTransicion
+function pararTransicion() {
+    document.getElementById("tres").addEventListener("click", comprobarTransicion);
+}
+
+function comprobarTransicion() {
+    console.log(movimientoParar);
+    movimientoParar = true;
+    console.log(movimientoParar);
 }
