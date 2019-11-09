@@ -100,12 +100,9 @@ box {
 }
 
 .rebotar {
-    width: 142px;
-    height: 142px;
-    background-color: #00AA66;
     position: relative;
     margin: 0 auto;
-    animation-name: rotar;
+    animation-name: rebotar;
     animation-duration: 1s;
     animation-iteration-count: infinite;
 }
@@ -116,22 +113,22 @@ y vuelva a la posición */
 
 @keyframes rebotar {
     from {
-        left: 50px;
-        animation-timing-function: linear;
+        top: 0px;
+        left: 0px;
     }
     25% {
-        left: 25px;
-        animation-timing-function: linear;
+        top: 40px;
+        left: 40px;
     }
     50% {
-        top: 50px;
-        animation-timing-function: linear;
+        top: 0px;
+        left: 60px;
     }
     75% {
-        left: 25px;
-        animation-timing-function: linear;
+        top: 40px;
+        left: 40px;
     }
     to {
-        top: 50px;
+        top: 0px;
     }
 }
