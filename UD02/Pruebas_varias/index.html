@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pruebas</title>
+    <style>
+        @import url("main.css");
+    </style>
 </head>
 
 <body>
@@ -35,6 +38,7 @@
                 botones.innerText = i;
                 botones.value = i;
                 botones.addEventListener("click", escribir);
+                botones.addEventListener("mousedown", sombra);
                 document.querySelector("container").appendChild(botones);
             }
         }
@@ -57,6 +61,11 @@
                 document.querySelector("result").innerText += e.key;
             }
 
+        }
+
+        function sombra() {
+            console.log(this);
+            this.classList.add("sombra");
         }
     </script>
 </body>
