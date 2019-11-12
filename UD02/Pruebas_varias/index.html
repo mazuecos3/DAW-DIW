@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pruebas</title>
+</head>
+
+<body>
+
+
+    <input id="pantalla" type="text" name="firstname">
+
+
+
+    <container></container>
+    <result>
+
+
+    </result>
+    <script>
+        var pantalla;
+        window.onload = init;
+
+        window.addEventListener("keydown", usarTecla);
+
+        function init() {
+
+            for (let i = 0; i < 10; i++) {
+
+                let botones = document.createElement("button");
+                //console.log(i);
+                botones.innerText = i;
+                botones.value = i;
+                botones.addEventListener("click", escribir);
+                document.querySelector("container").appendChild(botones);
+            }
+        }
+
+        function escribir() {
+
+            document.querySelector("result").innerText += this.value;
+        }
+
+        function usarTecla(e) {
+            pantalla = document.getElementById("pantalla");
+            console.log(pantalla);
+            console.log(e);
+
+            // SI ES DISTINTO DE NUMERO LO PONEMOS TALCUAL DONDE PULSEMOS LA LETRA O SIGNO.
+            // SI ES NUMERO LO AÑADIMOS AL RESULT CON EL INNER TEXT
+            if (isNaN(e.key)) {
+                pantalla.value += e.key;
+            } else {
+                document.querySelector("result").innerText += e.key;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
