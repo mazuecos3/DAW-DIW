@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pruebas</title>
+</head>
+
+<body>
+    <form>
+        First name:<br>
+        <input type="text" name="firstname"><br> Last name:<br>
+        <input type="text" name="lastname">
+    </form>
+
+    <container></container>
+    <result>
+
+
+    </result>
+    <script>
+        window.onload = init;
+
+        window.addEventListener("keydown", usarTecla);
+
+        function init() {
+
+            for (let i = 0; i < 10; i++) {
+
+                let botones = document.createElement("button");
+                //console.log(i);
+                botones.innerText = i;
+                botones.value = i;
+                botones.addEventListener("click", escribir);
+                document.querySelector("container").appendChild(botones);
+            }
+        }
+
+        function escribir() {
+
+            document.querySelector("result").innerText += this.value;
+        }
+
+        function usarTecla(e) {
+
+            console.log(e);
+            if (!isNaN(e.key)) {
+                document.querySelector("result").innerText += e.key;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
