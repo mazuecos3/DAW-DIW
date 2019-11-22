@@ -34,6 +34,8 @@ body {
 */
 
 items {
+    border: solid black 3px;
+    background-color: rgb(145, 62, 76, 0.7);
     display: grid;
     grid-template-columns: 900px;
     grid-template-rows: 200px 100px 400px;
@@ -103,11 +105,14 @@ button:active {
 */
 
 steps {
+   
+    visibility: hidden;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 50px);
     align-items: center;
     justify-items: center;
+    
     /* 
      * Fragmentos perdidos 
      * ^(;,;)^
@@ -123,6 +128,8 @@ steps {
 */
 
 steps * {
+    
+    transition-delay: 3s;
     /* 
      * Fragmentos perdidos 
      * ^(;,;)^
@@ -163,4 +170,10 @@ finalmsg {
      * Fragmentos perdidos 
      * ^(;,;)^
      */
+}
+
+.steplabel1{
+
+    font-size: 1.2em;
+    /*transform: scale(100px);*/
 }
