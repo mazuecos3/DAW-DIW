@@ -134,39 +134,63 @@ steps * {
 }
 
 
-/*Progress*/
-
-
 /*
 * CSS for ProgressBars
 */
 
 stepLabel {
     color: aqua;
-    transition: 1s;
 }
 
+
+/*Tamaño de la altura de la barra y alineamos a la izquierda para que comience desde ahí*/
+
 progress {
-    height: 100%;
+    justify-self: left;
+    height: 65%;
 }
+
+
+/*Asignamos el keyframe progressBar que va a pasar de 0 de ancho hasta el 100 %
+Es necesario poner el 100% aquí para que luego coja el ancho entero y no vuelva a otro tamaño*/
 
 .progressBuena {
     width: 100%;
-    animation: progressBar 1s linear;
+    animation: progressBuena 1s linear;
 }
 
 finalmsg {
     color: aqua;
+    border-radius: 50%;
+}
+
+
+/*Asignamos el keyframe neon para el mensaje final que va a 
+hacer que parpadee con luz neon y una sombra azul en este caso*/
+
+.neon {
+    animation: neon 1s linear;
+    animation-iteration-count: infinite;
 }
 
 @keyframes neon {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    from {
+        color: aqua;
+        opacity: 0.2;
+        -webkit-box-shadow: 4px 4px 0px -5px aqua;
+        -moz-box-shadow: 4px 4px 0px -5px aqua;
+        box-shadow: 4px 4px 0px -5px aqua;
+    }
+    to {
+        -webkit-box-shadow: 4px 4px 45px 28px aqua;
+        -moz-box-shadow: 4px 4px 45px 28px aqua;
+        box-shadow: 4px 4px 45px 28px aqua;
+        color: cyan;
+        opacity: 1;
+    }
 }
 
-@keyframes progressBar {
+@keyframes progressBuena {
     from {
         width: 0%;
     }
