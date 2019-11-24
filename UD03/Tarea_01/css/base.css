@@ -140,14 +140,23 @@ steps * {
 
 stepLabel {
     color: aqua;
+    text-align: center;
 }
 
 
-/*Tamaño de la altura de la barra y alineamos a la izquierda para que comience desde ahí*/
+/*stepLabel:nth-child(1) {
+    font-size: 1.2em;
+}*/
+
+
+/*Tamaño de la altura de la barra y alineamos a la izquierda para que comience desde ahí
+tenemos que poner webkit apperance none para que luego podamos asignarle atributos como el color
+borde, etc...*/
 
 progress {
     justify-self: left;
-    height: 65%;
+    height: 50%;
+    -webkit-appearance: none;
 }
 
 
@@ -159,9 +168,23 @@ Es necesario poner el 100% aquí para que luego coja el ancho entero y no vuelva
     animation: progressBuena 1s linear;
 }
 
+
+/*atributos de la clase progress que afectan a la barra de progreso*/
+
+.progressBuena::-webkit-progress-bar {
+    border-radius: 25px;
+    background-color: #eb94d0;
+}
+
+
+/*clase de el mensaje final donde añadimos oclor el borde en forma 
+mas circular y una pequeña separacion a la izquierda*/
+
 finalmsg {
     color: aqua;
     border-radius: 50%;
+    justify-self: left;
+    margin-left: 30px;
 }
 
 
@@ -173,10 +196,14 @@ hacer que parpadee con luz neon y una sombra azul en este caso*/
     animation-iteration-count: infinite;
 }
 
+
+/*Que cambie de opacidad practicamente 0 a 1 que es el maximo y añada 
+box shadow para hacer efecto parpadeo */
+
 @keyframes neon {
     from {
         color: aqua;
-        opacity: 0.2;
+        opacity: 0.1;
         -webkit-box-shadow: 4px 4px 0px -5px aqua;
         -moz-box-shadow: 4px 4px 0px -5px aqua;
         box-shadow: 4px 4px 0px -5px aqua;
@@ -190,11 +217,16 @@ hacer que parpadee con luz neon y una sombra azul en este caso*/
     }
 }
 
+
+/*animacion para pasar de 0 a 100% de ancho*/
+
 @keyframes progressBuena {
     from {
         width: 0%;
+        /*background-color: #F9BCCA;*/
     }
     to {
         width: 100%;
+        /*background-color: #EF476F*/
     }
 }
