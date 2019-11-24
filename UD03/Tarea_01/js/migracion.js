@@ -5,7 +5,7 @@ This Script is licensed under GPL v3 or higher
 Author: Oscar Maxzuecos
 
 */
-
+let contadorLabels = 0;
 let steps;
 
 function startMigration() {
@@ -14,34 +14,32 @@ function startMigration() {
     //creamos contenedor de todos lo que contiene steps
     //Nos quedamos con los hijos de el contenedor steps
     steps = document.querySelector('steps').children;
+    primeraLabel();
+}
 
-    for (let i = 0; i < steps.length; i++) {
-
-        steps[i].classList.add("estabaEscondido");
-        steps[i].addEventListener("transitionend", finalizar);
-
-        //el tagname Funciona con Mayusculas, coge el nombre de la etiqueta
-        if (steps[i].tagName == "STEPLABEL") {
-            //console.log(steps[i]);
-            steps[i].classList.add("stepLabel");
-        }
-        if (steps[i].tagName == "PROGRESS") {
-            console.log(steps[i]);
-            steps[i].classList.add("progressBuena");
-        }
-        if (steps[i].tagName == "FINALMSG") {
-            // console.log(steps[i]);
-            steps[i].classList.add("finalmsg");
-        }
+function primeraLabel() {
+    if (contadorLabels < steps.length) {
+        steps[contadorLabels].classList.add("estabaEscondido");
+        steps[contadorLabels].addEventListener("transitionend", progressBarra);
+        contadorLabels++;
     }
 }
 
-function finalizar() {
-
+function progressBarra() {
+    steps[contadorLabels].classList.add("estabaEscondido");
+    steps[contadorLabels].classList.add("progerssBuena");
+    steps[contadorLabels].addEventListener("transitionend", mensajeFinal);
     console.log("perro");
+    contadorLabels++;
 
 }
 
+function mensajeFinal() {
+    steps[contadorLabels].classList.add("estabaEscondido");
+    steps[contadorLabels].classList.add("finalmsg");
+    steps[contadorLabels].addEventListener("transitionend", primeraLabel);
+    contadorLabels++;
+}
 
 function init() {
     console.info(" * Init envirnoment ");

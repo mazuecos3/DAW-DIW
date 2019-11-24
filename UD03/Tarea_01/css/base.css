@@ -125,8 +125,8 @@ steps {
 */
 
 steps * {
-    transition: 1s;
     opacity: 0%;
+    transition: 1s;
 }
 
 .estabaEscondido {
@@ -143,17 +143,16 @@ steps * {
 
 stepLabel {
     color: aqua;
+    transition: 1s;
 }
 
 progress {
-    height: 75%;
-    width: 0%;
+    height: 100%;
 }
 
 .progressBuena {
-    height: 75%;
     width: 100%;
-    transition: 5s;
+    animation: progressBar 1s linear;
 }
 
 finalmsg {
@@ -167,7 +166,11 @@ finalmsg {
      */
 }
 
-.steplabel1 {
-    font-size: 1.2em;
-    /*transform: scale(100px);*/
+@keyframes progressBar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
 }
