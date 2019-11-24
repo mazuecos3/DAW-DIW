@@ -105,14 +105,11 @@ button:active {
 */
 
 steps {
-   
-    visibility: hidden;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 50px);
     align-items: center;
     justify-items: center;
-    
     /* 
      * Fragmentos perdidos 
      * ^(;,;)^
@@ -128,19 +125,12 @@ steps {
 */
 
 steps * {
-    
-    transition-delay: 3s;
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    transition: 1s;
+    opacity: 0%;
 }
 
 .estabaEscondido {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    opacity: 100%;
 }
 
 
@@ -151,18 +141,23 @@ steps * {
 * CSS for ProgressBars
 */
 
+stepLabel {
+    color: aqua;
+}
+
 progress {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    height: 75%;
+    width: 0%;
+}
+
+.progressBuena {
+    height: 75%;
+    width: 100%;
+    transition: 5s;
 }
 
 finalmsg {
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    color: aqua;
 }
 
 @keyframes neon {
@@ -172,8 +167,7 @@ finalmsg {
      */
 }
 
-.steplabel1{
-
+.steplabel1 {
     font-size: 1.2em;
     /*transform: scale(100px);*/
 }
