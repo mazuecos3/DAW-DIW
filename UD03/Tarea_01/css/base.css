@@ -204,14 +204,14 @@ box shadow para hacer efecto parpadeo */
     from {
         color: aqua;
         opacity: 0.1;
-        -webkit-box-shadow: 4px 4px 0px -5px aqua;
-        -moz-box-shadow: 4px 4px 0px -5px aqua;
-        box-shadow: 4px 4px 0px -5px aqua;
+        -webkit-text-shadow: 0px 0px 0px  yellow;
+        -moz-text-shadow: 0px 0px 0px  yellow;
+        text-shadow: 0px 0px 0px  yellow;
     }
     to {
-        -webkit-box-shadow: 4px 4px 45px 28px aqua;
-        -moz-box-shadow: 4px 4px 45px 28px aqua;
-        box-shadow: 4px 4px 45px 28px aqua;
+        -webkit-text-shadow: 0px 0px 30px  yellow;
+        -moz-text-shadow: 0px 0px 30px  yellow;
+        text-shadow: 0px 0px  30px yellow;
         color: cyan;
         opacity: 1;
     }
