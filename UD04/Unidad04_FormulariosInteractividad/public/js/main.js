@@ -30,10 +30,10 @@ function buscar() {
         let listado = document.createElement("ul");
 
         // Por cada uno de ellos 
-        resultado.forEach(fuente => {
+        resultado.forEach(kiosco => {
             // Creamos un <li>
             let calleli = document.createElement("li");
-            calleli.innerHTML = fuente.properties.emplazamiento + " -- [" + fuente.geometry.coordinates + "]";
+            calleli.innerHTML = kiosco.properties.emplazamiento + " -- [" + kiosco.geometry.coordinates + "]";
             // Lo anyadimos
             listado.appendChild(calleli);
         });
