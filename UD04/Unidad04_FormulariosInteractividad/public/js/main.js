@@ -1,12 +1,4 @@
-// Simple script to use with datosAbiertos
-
-// Author : Angel Berlanas Vicente
-//         <berlanas_ang@gva.es>
-// This script is licensed under GPLv3 or higher
-
-
 // Algunos valores
-
 const fuentesUrl = " http://mapas.valencia.es/lanzadera/opendata/kioscos_once/JSON";
 
 // Esta es la funcion de filtrado para
@@ -15,17 +7,9 @@ const fuentesUrl = " http://mapas.valencia.es/lanzadera/opendata/kioscos_once/JS
 
 function filtroLetra(elemento) {
     let letra = document.querySelector(`input[name="emplazamiento"]`).value;
-    return elemento.properties.calle.startsWith(letra);
-
+    //starsWith (con la letra que empieza)
+    return elemento.properties.emplazamiento.startsWith(letra);
 }
-
-
-// Pasa a mayuscula el texto de propio input
-// se lanza cada vez que se realiza una insercion en
-// el texto del nombre.
-
-
-
 
 function buscar() {
 
@@ -49,7 +33,7 @@ function buscar() {
         resultado.forEach(fuente => {
             // Creamos un <li>
             let calleli = document.createElement("li");
-            calleli.innerHTML = fuente.properties.calle + " -- [" + fuente.geometry.coordinates + "]";
+            calleli.innerHTML = fuente.properties.emplazamiento + " -- [" + fuente.geometry.coordinates + "]";
             // Lo anyadimos
             listado.appendChild(calleli);
         });
@@ -62,12 +46,9 @@ function buscar() {
 
 function init() {
 
-    // Binding de los eventos correspondientes.
-
     // Click en el boton de buscar
     document.querySelector(`input[type="button"]`).addEventListener("click", buscar);
 
 }
 
-// The mother of the lamb.
 window.onload = init;
