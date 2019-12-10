@@ -1,22 +1,33 @@
 $colorTexto: green;
 body {
+    margin:auto;
+    width: 100%;
     background: lightblue;
     font-family: Arial, Helvetica, sans-serif;
     color: $colorTexto;
+ 
+  
+}
+
+.busqueda{
     text-align: center;
-    border: 5px solid black;
-    width: 500px;
-    margin-left: 35%;
+    
 }
 
 .resultados {
-    ul {
-        li {
-            list-style: none;
-        }
-    }
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+   img{
+       max-width: 600px;
+       max-height: 400px;
+   }
+
+   
 }
 
 input:nth-child(1) {
     width: 200px;
 }
+
