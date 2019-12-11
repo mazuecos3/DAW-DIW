@@ -1,15 +1,6 @@
-// Algunos valores
+// Direccion json web
 const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
 
-// Esta es la funcion de filtrado para
-// obtener tan solo los elementos que cumplen
-// una serie de requisitos.
-
-function filtroLetra(elemento) {
-    let letra = document.querySelector(`input[name="falla"]`).value;
-    //starsWith (con la letra que empieza)
-    return elemento.properties.nombre.startsWith(letra);
-}
 
 function buscar() {
 
@@ -22,18 +13,25 @@ function buscar() {
         return response.json();
         // Y entonces
     }).then(respuesta => {
-        // Filtramos los resultados con el filtro definido anteriormente
-        const resultado = respuesta.features.filter(filtroLetra);
+        // resultados
+        const resultado = respuesta.features;
 
         let divResultados = document.getElementById("resultados");
         let divTodasFallas = document.createElement("div");
         divTodasFallas.classList.add("fallas");
         // Por cada uno de ellos 
         resultado.forEach(fallas => {
-
+            let fallaPrincipal = document.getElementById("fallaPrincipal");
+            let fallaInfantil = document.getElementById("fallaInfantil");     
             let divFalla = document.createElement("div");
+
             divFalla.classList.add("falla");
-            divFalla.innerHTML = "<img src=" + fallas.properties.boceto + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>";
+            if ( document.getElementById("fallaPrincipal").checked == true) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>"; 
+            }
+            if ( document.getElementById("fallaInfantil").checked == true) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>"; 
+              }
 
             //añadimos la falla 
             divTodasFallas.appendChild(divFalla);
@@ -48,10 +46,14 @@ function buscar() {
 }
 //funcion inicial
 function init() {
-
+   
+    //los dos radiobutons
+    document.querySelectorAll(`input[name="fallaPri"]`)[0].addEventListener("click", buscar);
+    document.querySelectorAll(`input[name="fallaPri"]`)[1].addEventListener("click", buscar);
+    
+  
     // Click en el boton de buscar
-    document.querySelector(`input[type="button"]`).addEventListener("click", buscar);
-
+  
 }
 
 //funcion inicial al cargar la pagina

@@ -1,6 +1,15 @@
 $colorTexto: black;
 $estilaTexto: Arial;
 $negrita: bold;
+
+%border {
+    border: 1px grey solid;
+    border-radius: 2px;
+}
+%tamañoBusqueda {
+    width: 98%;
+}
+
 body {
     margin: auto;
     width: 100%;
@@ -9,17 +18,28 @@ body {
     font-weight: $negrita;
 }
 
+
 .busqueda {
-    text-align: center;
+  
+    .section {
+
+        background: white;
+        @extend %tamañoBusqueda;
+       
+      
+    }
+  option{
+
+    background: red;
+  }
 }
 
-%border {
-    border: 1px grey solid;
-    border-radius: 2px;
-}
+
 
 .resultados {
+  
     .fallas {
+      
         margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -35,7 +55,7 @@ body {
     img {
         @extend %border;
         margin: 5px;
-        max-width: 600px;
+        max-width: 500px;
         max-height: 400px;
     }
     button {

@@ -15,14 +15,23 @@
 
 </head>
 
-<body></body>
+<body>
 
 
 <div class="busqueda">
     <h1> Fallas Valencia</h1>
     <form id="busquedaform">
-        <input type="text" name="falla" placeholder="La primera letra en Mayúscula">
-        <input type="button" value="Buscar">
+            <p>Sección</p>
+        <select name="section"class="section" >
+                <option>Value 1</option> 
+        </select><br>
+        <p>Año de funación</p>
+        <input class="section" type="text" name="año" placeholder="Desde"><br>
+        <input class="section" type="text" name="año1" placeholder="Hasta"><br>
+
+        <input type="radio" id="fallaPrincipal" name="fallaPri" value="principal"> Principal<br>
+        <input type="radio" id="fallaInfantil"name="fallaPri" value="infantil"> Infantil<br>
+       
     </form>
 </div>
 <div class="resultados" id="resultados">
