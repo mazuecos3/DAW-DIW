@@ -25,23 +25,28 @@ function buscar() {
         // Filtramos los resultados con el filtro definido anteriormente
         const resultado = respuesta.features.filter(filtroLetra);
 
-        // Una vez tenemos el listado filtrado pasamos a crear
-        // cada uno de los <li> que representan
-       let divResultados = document.getElementById("resultados");
-
+        let divResultados = document.getElementById("resultados");
+        let divTodasFallas = document.createElement("div");
+        divTodasFallas.classList.add("fallas");
         // Por cada uno de ellos 
         resultado.forEach(fallas => {
-            // Creamos un <li>
-            let calleli = document.createElement("div");
-            calleli.innerHTML = "<img src=" + fallas.properties.boceto + ">"  + fallas.properties.nombre ;
-            // Lo anyadimos
-            divResultados.appendChild(calleli);
+
+            let divFalla = document.createElement("div");
+            divFalla.classList.add("falla");
+            divFalla.innerHTML = "<img src=" + fallas.properties.boceto + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>";
+
+            //añadimos la falla 
+            divTodasFallas.appendChild(divFalla);
         });
-       
-      
+
+        divResultados.innerHTML = "";
+        divResultados.appendChild(divTodasFallas);
+
+
     });
 
 }
+//funcion inicial
 function init() {
 
     // Click en el boton de buscar
@@ -49,4 +54,5 @@ function init() {
 
 }
 
+//funcion inicial al cargar la pagina
 window.onload = init;

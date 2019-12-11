@@ -6,7 +6,6 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "scss": "node-sass -w --output-style compressed scss -o public/css"
-
     },
     "repository": {
         "type": "git",
