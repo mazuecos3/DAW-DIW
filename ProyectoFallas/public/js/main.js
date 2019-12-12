@@ -1,6 +1,6 @@
 // Direccion json web
 const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
-
+var resultado;
 function buscar() {
     // Obtenemos el JSON que esta definido.
     const fetchPromesa = fetch(fuentesUrl);
@@ -12,47 +12,51 @@ function buscar() {
         // Y entonces.
     }).then(respuesta => {
         // resultados.
-        const resultado = respuesta.features;
+        resultado = respuesta.features;
+        principal();
 
-        let divResultados = document.getElementById("resultados");
-        let divTodasFallas = document.createElement("div");
-        divTodasFallas.classList.add("fallas");
-
-        // Por cada uno de ellos 
-        resultado.forEach(fallas => {
-            //DUDAS CON EL FILTER PREGUNTAR A ANGEL
-            establecerSection(fallas);
-
-            //Creamos un div para cada falla y le añadimos la clase.
-            let divFalla = document.createElement("div");
-            divFalla.classList.add("falla");
-
-            //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
-            if (document.getElementById("fallaPrincipal").checked == true) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>";
-            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
-            if (document.getElementById("fallaInfantil").checked == true) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + "><br>" + fallas.properties.nombre + "<br><button>Ubicación</button>";
-            }
-            //añadimos la falla 
-            divTodasFallas.appendChild(divFalla);
-        });
-        // Lo establecemos en blanco cada vez que se haga la funcion para hacer efecto refrescar.
-        divResultados.innerHTML = "";
-        //Añadimos las falla al div principal de los resultados.
-        divResultados.appendChild(divTodasFallas);
     });
 
 }
 
+function principal() {
+    
+    let divResultados = document.getElementById("resultados");
+    let divTodasFallas = document.createElement("div");
+    divTodasFallas.classList.add("fallas");
 
+    // Por cada uno de ellos 
+    resultado.forEach(fallas => {
+        //DUDAS CON EL FILTER PREGUNTAR A ANGEL
+        establecerSection(fallas);
+
+        //Creamos un div para cada falla y le añadimos la clase.
+        let divFalla = document.createElement("div");
+        divFalla.classList.add("falla");
+
+        //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
+        if (document.getElementById("fallaPrincipal").checked == true) {
+            divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+        } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
+        if (document.getElementById("fallaInfantil").checked == true) {
+            divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+        }
+        //añadimos la falla 
+        divTodasFallas.appendChild(divFalla);
+    });
+    // Lo establecemos en blanco cada vez que se haga la funcion para hacer efecto refrescar.
+    divResultados.innerHTML = "";
+    //Añadimos las falla al div principal de los resultados.
+    divResultados.appendChild(divTodasFallas);
+}
 
 
 function establecerSection(fallas) {
 
     let allSection = document.getElementById("section");
     let option = document.createElement("option");
-    option.innerHTML = fallas.properties.seccion;
+    option.innerText = fallas.properties.seccion;
+    option.value = fallas.properties.seccion;
 
     allSection.appendChild(option);
 
