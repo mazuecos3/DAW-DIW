@@ -1,11 +1,11 @@
 $colorTexto: black;
 $estilaTexto: Arial;
 $negrita: bold;
-
 %border {
     border: 1px grey solid;
     border-radius: 2px;
 }
+
 %tamañoBusqueda {
     width: 98%;
 }
@@ -18,45 +18,37 @@ body {
     font-weight: $negrita;
 }
 
-
 .busqueda {
-  
+    margin-left: 2%;
     .section {
-
         background: white;
         @extend %tamañoBusqueda;
-       
-      
     }
-  option{
-
-    background: red;
-  }
 }
 
-
-
 .resultados {
-  
     .fallas {
-      
         margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
         align-content: center;
         justify-items: center;
         text-align: center;
         grid-gap: 10px;
     }
     .falla {
+        display: grid;
+        grid-template-rows: 1fr 50px 50px;
         @extend %border;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
     }
     img {
         @extend %border;
         margin: 5px;
-        max-width: 500px;
-        max-height: 400px;
+        width: 400px;
+        height: 300px;
     }
     button {
         @extend %border;
