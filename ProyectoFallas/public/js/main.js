@@ -18,11 +18,9 @@ function buscar() {
         resultadoJSON = respuesta.features;
         principal();
         rellenarSection();
-
     });
 
 }
-
 function rellenarSection() {
     // Recogemos las secciones  las metemos en un array.
     for (let i = 0; i < resultadoJSON.length; i++) {
@@ -49,6 +47,8 @@ function rellenarSection() {
 
 function principal() {
 
+    let principalChecked = document.getElementById("fallaPrincipal").checked; 
+    let infantilChecked = document.getElementById("fallaInfantil").checked; 
     let divResultados = document.getElementById("resultados");
     let divTodasFallas = document.createElement("div");
     divTodasFallas.classList.add("fallas");
@@ -61,20 +61,39 @@ function principal() {
         let divFalla = document.createElement("div");
         divFalla.classList.add("falla");
 
-        //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
-        if (document.getElementById("fallaPrincipal").checked == true) {
-            divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
-        } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
-        if (document.getElementById("fallaInfantil").checked == true) {
-            divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+        //Comprobar si el selector tiene alguna seccion seleccionada
+        var secciones = document.getElementById("section");
+        //Primer valor de ejemplo que muestra todas las fallas
+        if (secciones.value == "Todas") {
+            
+            //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
+            if (principalChecked) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
+            if (infantilChecked ) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+            }
+            //añadimos la falla 
+            divTodasFallas.appendChild(divFalla);
+            //depende de el valor de la seccion se mostrará aquellos que entren en esa seccion.
+        } else if (fallas.properties.seccion == secciones.value) {
+            //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
+            if (principalChecked) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
+            if (infantilChecked ) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + fallas.properties.nombre + "<button>Ubicación</button>";
+            }
+            //añadimos la falla 
+            divTodasFallas.appendChild(divFalla);
         }
-        //añadimos la falla 
-        divTodasFallas.appendChild(divFalla);
+
     });
     // Lo establecemos en blanco cada vez que se haga la funcion para hacer efecto refrescar.
     divResultados.innerHTML = "";
     //Añadimos las falla al div principal de los resultados.
     divResultados.appendChild(divTodasFallas);
+    
 }
 
 
@@ -85,10 +104,10 @@ function init() {
     //para que al entrar muestre todas las fallas principales directamente.
     buscar();
     //Añadimos evento click a cada radiobutton.
-    document.querySelectorAll(`input[name="fallaPri"]`)[0].addEventListener("click", buscar);
-    document.querySelectorAll(`input[name="fallaPri"]`)[1].addEventListener("click", buscar);
+    document.querySelectorAll(`input[name="fallaPri"]`)[0].addEventListener("click", principal);
+    document.querySelectorAll(`input[name="fallaPri"]`)[1].addEventListener("click", principal);
     //Funcion changue para el section
-    document.getElementById("section").addEventListener("change", buscar);
+   document.getElementById("section").addEventListener("change", principal);
 }
 
 
