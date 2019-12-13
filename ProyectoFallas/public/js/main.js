@@ -1,6 +1,9 @@
 // Direccion json web
 const fuentesUrl = "http://mapas.valencia.es/lanzadera/opendata/Monumentos_falleros/JSON";
-var resultado;
+var resultadoJSON;
+
+let secciones = [];
+
 function buscar() {
     // Obtenemos el JSON que esta definido.
     const fetchPromesa = fetch(fuentesUrl);
@@ -11,24 +14,48 @@ function buscar() {
         return response.json();
         // Y entonces.
     }).then(respuesta => {
-        // resultados.
-        resultado = respuesta.features;
+        // resultadoJSONs.
+        resultadoJSON = respuesta.features;
         principal();
+        rellenarSection();
 
     });
 
 }
 
+function rellenarSection() {
+    // Recogemos las secciones  las metemos en un array.
+    for (let i = 0; i < resultadoJSON.length; i++) {
+        let seccion = resultadoJSON[i].properties.seccion;
+        //para que no se repitan dentro de el array.
+        if (!secciones.includes(seccion)) {
+            secciones.push(resultadoJSON[i].properties.seccion);
+        }
+    }
+    //Ordenamos el array.
+    secciones.sort();
+    //declaramos la seccion y por cada iteración añadimos una option nueva
+    let allSection = document.getElementById("section");
+
+    for (let i = 0; i < secciones.length; i++) {
+        let option = document.createElement("option");
+        option.innerText = secciones[i];
+        option.value = secciones[i];
+
+        allSection.appendChild(option);
+    }
+    console.log(secciones);
+}
+
 function principal() {
-    
+
     let divResultados = document.getElementById("resultados");
     let divTodasFallas = document.createElement("div");
     divTodasFallas.classList.add("fallas");
 
     // Por cada uno de ellos 
-    resultado.forEach(fallas => {
+    resultadoJSON.forEach(fallas => {
         //DUDAS CON EL FILTER PREGUNTAR A ANGEL
-        establecerSection(fallas);
 
         //Creamos un div para cada falla y le añadimos la clase.
         let divFalla = document.createElement("div");
@@ -51,22 +78,7 @@ function principal() {
 }
 
 
-function establecerSection(fallas) {
 
-    let allSection = document.getElementById("section");
-    let option = document.createElement("option");
-    option.innerText = fallas.properties.seccion;
-    option.value = fallas.properties.seccion;
-
-    allSection.appendChild(option);
-
-    //DUDAS CON EL FILTER
-    let selectValue = allSection[allSection.selectedIndex].value;
-    console.log(fallas.properties.seccion.startsWith(selectValue))
-    return fallas.properties.seccion.startsWith(selectValue);
-
-
-}
 //Funcion inicial
 function init() {
     //llamamos a la funcion buscar nada mas empezar porque el radiobuton principal va a estar pulsado por defecto
