@@ -81,8 +81,7 @@ function principal() {
         //Primer valor de ejemplo que muestra todas las fallas
 
         if (fecha1.value < fecha2.value && fecha1.value == fallas.properties.anyo_fundacion && fecha1.value == fallas.properties.anyo_fundacion) {
-            
-        
+
         if (secciones.value == "Todas") {
             
             //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
