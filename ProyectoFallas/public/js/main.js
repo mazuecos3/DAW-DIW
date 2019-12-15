@@ -42,7 +42,22 @@ function rellenarSection() {
 
         allSection.appendChild(option);
     }
-    console.log(secciones);
+    //console.log(secciones);
+}
+
+function fechas() {
+    let fecha1 = document.getElementById("fecha1");
+    let fecha2 = document.getElementById("fecha2");
+   // console.log(fecha1.value);
+   // console.log(fecha2.value);
+
+    for (let i = 0; i < resultadoJSON.length; i++) {
+        let fechaPrincipal = resultadoJSON[i].properties.anyo_fundacion;
+        let fechaInfantil = resultadoJSON[i].properties.anyo_fundacion_i;
+       
+        console.log(fechaPrincipal);
+    }
+   
 }
 
 function principal() {
@@ -55,15 +70,19 @@ function principal() {
 
     // Por cada uno de ellos 
     resultadoJSON.forEach(fallas => {
-        //DUDAS CON EL FILTER PREGUNTAR A ANGEL
-
         //Creamos un div para cada falla y le añadimos la clase.
         let divFalla = document.createElement("div");
         divFalla.classList.add("falla");
 
-        //Comprobar si el selector tiene alguna seccion seleccionada
-        var secciones = document.getElementById("section");
+        let secciones = document.getElementById("section");
+        let fecha1 = document.getElementById("fecha1");
+        let fecha2 = document.getElementById("fecha2");
+       
         //Primer valor de ejemplo que muestra todas las fallas
+
+        if (fecha1.value < fecha2.value && fecha1.value == fallas.properties.anyo_fundacion && fecha1.value == fallas.properties.anyo_fundacion) {
+            
+        
         if (secciones.value == "Todas") {
             
             //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
@@ -87,13 +106,15 @@ function principal() {
             //añadimos la falla 
             divTodasFallas.appendChild(divFalla);
         }
-
+    }
     });
     // Lo establecemos en blanco cada vez que se haga la funcion para hacer efecto refrescar.
     divResultados.innerHTML = "";
     //Añadimos las falla al div principal de los resultados.
     divResultados.appendChild(divTodasFallas);
-    
+
+    fechas();
+   
 }
 
 
@@ -108,6 +129,8 @@ function init() {
     document.querySelectorAll(`input[name="fallaPri"]`)[1].addEventListener("click", principal);
     //Funcion changue para el section
    document.getElementById("section").addEventListener("change", principal);
+   document.getElementById("fecha1").addEventListener("blur",principal);
+   document.getElementById("fecha2").addEventListener("blur",principal);
 }
 
 
