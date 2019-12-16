@@ -46,11 +46,10 @@ function rellenarSection() {
     //console.log(secciones);
 }
 
-
-
 function principal() {
 
     let principalChecked = document.getElementById("fallaPrincipal").checked;
+    let infantilChecked = document.getElementById("fallaInfantil").checked;
     let divResultados = document.getElementById("resultados");
     let divTodasFallas = document.createElement("div");
     divTodasFallas.classList.add("fallas");
@@ -65,75 +64,43 @@ function principal() {
         let fecha1 = document.getElementById("fecha1");
         let fecha2 = document.getElementById("fecha2");
         // RANGO FECHAS
-        let boceto;
 
         // if (fecha1.value < fecha2.value && fecha1.value < fallas.properties.anyo_fundacion && fecha2.value > fallas.properties.anyo_fundacion) {
 
         if (secciones.value == "Todas") {
-            //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
-            if (principalChecked) {
-                boceto = fallas.properties.boceto;
-            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
-            else {
-                boceto = fallas.properties.boceto_i;
-            }
-            //depende de el valor de la seccion se mostrará aquellos que entren en esa seccion.
-        } else if (fallas.properties.seccion == secciones.value) {
 
             //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
             if (principalChecked) {
-                console.log("antes " + boceto);
-                boceto = fallas.properties.boceto;
-                console.log("despues " + boceto);
-            }
-            //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
-            else {
-                boceto = fallas.properties.boceto_i;
-                console.log("antes " + boceto);
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
+            if (infantilChecked) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
             }
             //añadimos la falla 
+            divTodasFallas.appendChild(divFalla);
+            //depende de el valor de la seccion se mostrará aquellos que entren en esa seccion.
+        } else if (fallas.properties.seccion == secciones.value) {
+            //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
+            if (principalChecked) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+            } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
+            if (infantilChecked) {
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+            }
+            //añadimos la falla 
+            divTodasFallas.appendChild(divFalla);
         }
         //   }
-
-        let imagen = document.createElement("img");
-        imagen.src = boceto;
-
-        let nombre = document.createElement("p");
-        nombre.innerText = fallas.properties.nombre;
-
-        let botonUbi = document.createElement("button");
-        botonUbi.innerText = "Ubicación";
-
-        let botonInfo = document.createElement("button");
-        botonInfo.innerText = "Más Información";
-
-        divFalla.appendChild(imagen);
-        divFalla.appendChild(nombre);
-        divFalla.appendChild(botonUbi);
-        divFalla.appendChild(botonInfo);
-        divTodasFallas.appendChild(divFalla);
-
     });
-
     // Lo establecemos en blanco cada vez que se haga la funcion para hacer efecto refrescar.
     divResultados.innerHTML = "";
     //Añadimos las falla al div principal de los resultados.
     divResultados.appendChild(divTodasFallas);
-
-
 }
 
 function limpiar() {
     let divResultados = document.getElementById("resultados");
     divResultados.innerHTML = "";
-}
-
-function mostrarMapa() {
-    console.log("perro1")
-}
-
-function mostrarInfo() {
-    console.log("perro2")
 }
 //Funcion inicial
 function init() {
@@ -148,11 +115,6 @@ function init() {
     //Funcion perdida de foco
     document.getElementById("fecha1").addEventListener("blur", principal);
     document.getElementById("fecha2").addEventListener("blur", principal);
-
-
-
-
-
 }
 //Funcion inicial al cargar la pagina.
 window.onload = init;
