@@ -71,10 +71,12 @@ function principal() {
 
             //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
             if (principalChecked) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" +
+                    "<button class='ubi'>Ubicación</button>" + "<button class='info'>Más Información</button>";
             } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
             if (infantilChecked) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" +
+                    "<button class='ubi'>Ubicación</button>" + "<button class='info'>Más Información</button>";
             }
             //añadimos la falla 
             divTodasFallas.appendChild(divFalla);
@@ -82,10 +84,12 @@ function principal() {
         } else if (fallas.properties.seccion == secciones.value) {
             //Si esta pulsado el radiobutton de la falla pirncipal establecemos las fotos de las fallas principales.
             if (principalChecked) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto + ">" + "<p>" + fallas.properties.nombre + "</p>" +
+                    "<button class='ubi'>Ubicación</button>" + "<button class='info'>Más Información</button>";
             } //Si esta pulsado el radiobutton de la falla infantil establecemos las fotos de las fallas infantil.
             if (infantilChecked) {
-                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" + "<button>Ubicación</button>" + "<button>Más Información</button>";
+                divFalla.innerHTML = "<img src=" + fallas.properties.boceto_i + ">" + "<p>" + fallas.properties.nombre + "</p>" +
+                    "<button class='ubi'>Ubicación</button>" + "<button class='info' >Más Información</button>";
             }
             //añadimos la falla 
             divTodasFallas.appendChild(divFalla);
@@ -98,15 +102,39 @@ function principal() {
     divResultados.appendChild(divTodasFallas);
 }
 
+function asignarEventoBotones() {
+    let btnUbi = document.getElementsByClassName("ubi");
+    let btnInfo = document.getElementsByClassName("info");
+    for (let i = 0; i < btnUbi.length; i++) {
+        btnUbi[i].addEventListener("click", mostrarMapa);
+    }
+    for (let i = 0; i < btnInfo.length; i++) {
+        btnInfo[i].addEventListener("click", mostrarInfo);
+    }
+    console.log(btnUbi);
+    console.log(btnInfo);
+}
+
+function mostrarMapa() {
+    console.log("MAPA");
+}
+
+function mostrarInfo() {
+    console.log("INFO");
+
+}
+
 function limpiar() {
     let divResultados = document.getElementById("resultados");
     divResultados.innerHTML = "";
+
 }
 //Funcion inicial
 function init() {
     //llamamos a la funcion buscar nada mas empezar porque el radiobuton principal va a estar pulsado por defecto
     //para que al entrar muestre todas las fallas principales directamente.
     buscar();
+
     //Añadimos evento click a cada radiobutton.
     document.querySelectorAll(`input[name="fallaPri"]`)[0].addEventListener("click", principal);
     document.querySelectorAll(`input[name="fallaPri"]`)[1].addEventListener("click", principal);
@@ -115,6 +143,8 @@ function init() {
     //Funcion perdida de foco
     document.getElementById("fecha1").addEventListener("blur", principal);
     document.getElementById("fecha2").addEventListener("blur", principal);
+    //Funcion botones ubicacion y mas información
+    asignarEventoBotones();
 }
 //Funcion inicial al cargar la pagina.
 window.onload = init;
