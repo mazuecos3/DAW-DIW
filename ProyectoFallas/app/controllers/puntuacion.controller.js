@@ -3,8 +3,9 @@ const Puntuacion = require('../models/puntuacion.model.js');
 // Obtener todos los puntuaciones
 exports.findAll = (req,res) => {
 
+    console.log(req.body)
     Puntuacion.find().then(puntuaciones=>{
-        res.send(puntuaciones);
+        res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({
             message: err.message || " Algo fue mal mientras los capturabamos a todos"
