@@ -34,17 +34,10 @@ body {
     }
     .falla {
         display: grid;
-<<<<<<< HEAD
-        grid-template-rows: 1fr 50px 50px 50px;
-        -webkit-box-shadow: 0px 0px 9px 9px rgba(232,232,232,1);
-        -moz-box-shadow: 0px 0px 9px 9px rgba(232,232,232,1);
-        box-shadow: 0px 0px 9px 9px rgba(232,232,232,1);
-=======
         grid-template-rows: 1fr 50px 50px;
         -webkit-box-shadow: 0px 0px 9px 9px rgba(232, 232, 232, 1);
         -moz-box-shadow: 0px 0px 9px 9px rgba(232, 232, 232, 1);
         box-shadow: 0px 0px 9px 9px rgba(232, 232, 232, 1);
->>>>>>> 7c4851e4e70e6225c5f30ca5b4c7610b306c183f
         border-radius: 2%;
         margin-top: 20px;
         align-content: center;

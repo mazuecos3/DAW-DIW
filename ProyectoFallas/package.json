@@ -1,21 +1,24 @@
 {
-    "name": "fallas",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "scss": "node-sass -w --output-style compressed scss -o public/css"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mazuecos3/DAW-DIW/tree/master/UD04/Unidad04_FormulariosInteractividad"
-    },
-    "author": "Oscar Mazuecos",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.17.1",
-        "node-sass": "^4.13.0",
-        "sass": "^1.23.7"
-    }
+  "name": "fallas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w --output-style compressed scss -o public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mazuecos3/DAW-DIW/tree/master/UD04/Unidad04_FormulariosInteractividad"
+  },
+  "author": "Oscar Mazuecos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.4.0",
+    "mongoose": "^5.8.1",
+    "node-sass": "^4.13.0",
+    "nodemon": "^2.0.2",
+    "sass": "^1.23.7"
+  }
 }
