@@ -177,6 +177,14 @@ function crearMapas() {
 
 }
 
+function getCoordinates(coordenadas) {
+    // Cambiar la proyeccion de la referencia espacial 25830 a 4326
+    let firstProjection = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
+    let secondProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+    coordenadas = proj4(firstProjection, secondProjection, coordenadas);
+
+    return [coordenadas[1], coordenadas[0]];
+}
 
 
 
