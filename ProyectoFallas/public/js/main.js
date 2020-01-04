@@ -15,6 +15,8 @@ let map;
 
 
 function crearMapa(idFalla) {
+    console.log("normales " + misCoordenadas.get(idFalla));
+    console.log("buenas " + getCoordinates(misCoordenadas.get(idFalla)));
     map = L.map("map");
 
     let tilerMapUrl = 'https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=iKFTul3NW3eysK9xpmVO';
@@ -24,6 +26,30 @@ function crearMapa(idFalla) {
 
     map.setView(misCoordenadas.get(idFalla), 16);
 
+}
+
+function crearMapas() {
+    for (let i = 0; i < resultadoJSON.length; i++) {
+
+        ids.push(resultadoJSON[i].properties.id);
+
+        coordenadas.push(resultadoJSON[i].geometry.coordinates);
+
+    }
+    for (let i = 0; i < resultadoJSON.length; i++) {
+
+        misCoordenadas.set(ids[i], coordenadas[i]);
+
+    }
+}
+
+function getCoordinates(coordenadas) {
+    // Cambiar la la referencia espacial 
+    let projection1 = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
+    let projection2 = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+    coordenadas = proj4(projection1, projection2, coordenadas);
+
+    return [coordenadas[1], coordenadas[0]];
 }
 
 function buscar() {
@@ -155,36 +181,12 @@ function cargarFalla(boceto, nombreFalla, id) {
     divFalla.appendChild(botonInfo);
 
     divTodasFallas.appendChild(divFalla);
-
+    // Una vez cargadas las fallas creamos mapa
     crearMapas();
 
 }
 
-function crearMapas() {
-    for (let i = 0; i < resultadoJSON.length; i++) {
 
-        ids.push(resultadoJSON[i].properties.id);
-
-        coordenadas.push(resultadoJSON[i].geometry.coordinates);
-
-    }
-    for (let i = 0; i < resultadoJSON.length; i++) {
-
-        misCoordenadas.set(ids[i], coordenadas[i]);
-
-    }
-
-
-}
-
-function getCoordinates(coordenadas) {
-    // Cambiar la proyeccion de la referencia espacial 25830 a 4326
-    let firstProjection = '+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs';
-    let secondProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
-    coordenadas = proj4(firstProjection, secondProjection, coordenadas);
-
-    return [coordenadas[1], coordenadas[0]];
-}
 
 
 
