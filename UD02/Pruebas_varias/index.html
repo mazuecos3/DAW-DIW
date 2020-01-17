@@ -26,7 +26,6 @@
     <script>
         var pantalla;
         window.onload = init;
-
         window.addEventListener("keydown", usarTecla);
 
         function init() {
@@ -55,10 +54,36 @@
 
             // SI ES DISTINTO DE NUMERO LO PONEMOS TALCUAL DONDE PULSEMOS LA LETRA O SIGNO.
             // SI ES NUMERO LO AÑADIMOS AL RESULT CON EL INNER TEXT
-            if (isNaN(e.key)) {
-                pantalla.value += e.key;
-            } else {
-                document.querySelector("result").innerText += e.key;
+            switch (e.keyCode) {               
+                    case 97: pantalla.value += e.key;
+                    
+                    break;
+                    case 98:  pantalla.value += e.key;
+                    
+                    break;
+                    case 99: pantalla.value += e.key;
+                    
+                    break;
+                    case 100: pantalla.value += e.key;
+                    
+                    break;
+                    case 101: pantalla.value += e.key;
+                    
+                    break;
+                    case 102: pantalla.value += e.key;
+                    
+                    break;
+                    case 103: pantalla.value += e.key;
+                    
+                    break;
+                    case 104: pantalla.value += e.key;
+                    
+                    break;
+                    case 105: pantalla.value += e.key;
+                    
+                    break;
+                   
+                    
             }
 
         }
