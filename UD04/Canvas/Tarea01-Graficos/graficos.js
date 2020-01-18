@@ -1,51 +1,66 @@
-function buildGrafico(){
-    console.info(" * Construyendo grafico ");
-    const canvas = document.querySelector("canvas");
-    // contexto -> ctx
+let dioses = [];
+let tipoGrafico;
+let color = ["green", "red", "orange", "purple"]
+
+//datos añadidos como json  (array clave - valor)
+function main() {
+
+    let nombre = document.querySelectorAll("input[class='left']");
+    let poder = document.querySelectorAll("input[class='right']");
+
+    for (let i = 0; i < nombre.length; i++) {
+
+        dioses.push({
+            "nombre": nombre[i].value,
+            "poder": poder[i].value,
+            "color": color[i]
+        });
+
+    }
+
+    console.log(dioses);
+    tarta(dioses);
+    rectangulos(dioses);
+    lineas(dioses);
+
+}
+
+//grafico rectangular
+function rectangulos() {
+    console.log(" * Construyendo grafico rectangular")
+    const canvas = document.getElementById("canvas1");
+
     let ctx = canvas.getContext("2d");
 
-    ctx.fillStyle="red";
 
-    //ctx.fillRect(10,10,100,200);
-    ctx.strokeStyle="purple";
-    ctx.lineWidth=1;
-    //ctx.strokeRect(10,10,100,200);
-
-    ctx.beginPath();
-    ctx.moveTo(100,100);
-    ctx.lineTo(50,50);
-    ctx.lineTo(50,100);
-    ctx.lineTo(100,100);
-    //ctx.fill();
-    ctx.stroke();
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    ctx.moveTo(200,200);
-
-    // control, destino
-    //ctx.quadraticCurveTo(100,100,200,0);
-    //ctx.bezierCurveTo(100,100,70,70,200,0);
-
-    ctx.beginPath();
-
-    //ctx.arc(200,200,50,0.2,1 * Math.PI);
-
-    ctx.stroke();
-    console.log(ctx);
 }
 
-function loadListeners(){
-    document.querySelector("input[name='grafiqueame']").addEventListener("click",buildGrafico);
+//grafico lineal
+function lineas() {
+    console.log(" * Construyendo grafico lineal")
+    const canvas = document.getElementById("canvas2");
+
+    let ctx = canvas.getContext("2d");
 }
 
 
-function init(){
-    //console.log(" * Init ");
-    loadListeners();
-  
+//grafico de la tarta
+function tarta() {
+    console.info(" * Construyendo grafico tarta ");
 
-    
+    const canvas = document.getElementById("canvas3");
+
+    let ctx = canvas.getContext("2d");
+
 }
 
-window.onload=init;
+
+
+function init() {
+
+    document.querySelector("input[name='grafiqueame']").addEventListener("click", main);
+
+}
+
+
+window.onload = init;
