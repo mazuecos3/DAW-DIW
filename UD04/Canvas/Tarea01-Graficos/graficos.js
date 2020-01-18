@@ -47,14 +47,9 @@ function lineas() {
 //grafico de la tarta
 function tarta() {
     console.info(" * Construyendo grafico tarta ");
-
     const canvas = document.getElementById("canvas3");
-
     let ctx = canvas.getContext("2d");
-
 }
-
-
 
 function init() {
 
