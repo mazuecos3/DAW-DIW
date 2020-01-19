@@ -52,8 +52,6 @@ function rectangulos(dioses) {
 
 }
 
-
-
 //grafico lineal
 function lineas(dioses) {
 
