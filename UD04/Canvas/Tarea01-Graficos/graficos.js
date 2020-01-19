@@ -16,31 +16,37 @@ function main() {
 
     }
 
-    graficoRayas(dioses);
-    tarta(dioses);
+    rectangulos(dioses);
     lineas(dioses);
-
+    // tarta(dioses);
 
 }
 
 //grafico rectangular
-function graficoRayas(dioses) {
+function rectangulos(dioses) {
     console.log("Creando grafico rayas")
     const canvas = document.getElementById("canvas1");
     let ctx = canvas.getContext("2d");
 
-    let width = canvas.width;
-    let height = canvas.height;
+    let ancho = canvas.width;
+    let alto = canvas.height;
 
     const poderTotal = sumaPoderes(dioses);
-    const barra = canvas.width / dioses.length;
+    //tamaño de cada barra (anchura)
+    let partes = ancho / dioses.length;
 
+    ctx.clearRect(0, 0, ancho, alto);
+    ctx.fillStyle = "black";
+    ctx.font = "30px Verdana";
+    ctx.fillText("Grafico Rectangular", 100, 150);
 
     for (let i = 0; i < dioses.length; i++) {
-        const dios = dioses[i];
-        ctx.fillStyle = dios.color;
-        let altura = Math.round(width * dios.poder / (poderTotal + 20))
-        ctx.fillRect(barra * i, height - altura, barra, altura);
+
+        ctx.fillStyle = dioses[i].color;
+        let altura = Math.round(ancho * dioses[i].poder / (poderTotal))
+        ctx.fillRect(partes * i, alto - altura, partes, altura);
+        ctx.fillStyle = "black";
+        ctx.fillText(dioses[i].nombre, partes * i, alto);
 
     }
 
@@ -49,19 +55,62 @@ function graficoRayas(dioses) {
 
 
 //grafico lineal
-function lineas() {
-    console.log(" * Construyendo grafico lineal")
-    const canvas = document.getElementById("canvas2");
+function lineas(dioses) {
 
+    console.log("Creando grafico lineas")
+    const canvas = document.getElementById("canvas2");
     let ctx = canvas.getContext("2d");
+    const poderTotal = sumaPoderes(dioses);
+
+    let ancho = canvas.width;
+    let alto = canvas.height;
+
+    let partes = ancho / dioses.length;
+    let cadaAltura = alto / poderTotal;
+
+    //la posicion de la primera linea
+    let X = 0;
+    let Y = alto - dioses[0].poder * cadaAltura;
+
+    ctx.clearRect(0, 0, ancho, alto);
+    ctx.font = "30px Verdana";
+    ctx.fillText("Grafico Linear", 100, 150);
+    ctx.lineWidth = 5;
+    for (let i = 0; i < dioses.length; i++) {
+
+        ctx.strokeStyle = dioses[i].color;
+        let result = alto - cadaAltura * dioses[i].poder;
+
+        ctx.beginPath();
+        ctx.moveTo(X, Y);
+        ctx.lineTo(X + partes, result);
+        ctx.stroke();
+
+        X += partes;
+        Y = result;
+
+        ctx.fillStyle = "black";
+        ctx.fillText(dioses[i].nombre, partes * i, alto);
+    }
+
 }
 
 
-//grafico de la tarta
-function tarta() {
+//grafico de la tarta Dificultad maxima
+function tarta(dioses) {
+
     console.info(" * Construyendo grafico tarta ");
     const canvas = document.getElementById("canvas3");
     let ctx = canvas.getContext("2d");
+
+    let ancho = canvas.width;
+    let alto = canvas.height;
+
+    ctx.clearRect(0, 0, ancho, alto);
+    ctx.fillStyle = "black";
+    ctx.font = "30px Verdana";
+    ctx.fillText("Grafico Tarta", 100, 150);
+
 }
 
 function sumaPoderes(dioses) {
