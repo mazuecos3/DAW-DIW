@@ -10,61 +10,42 @@
             b.fill = document.getElementById("type").value;
             b.size = document.getElementById("size").value;
         });
+        asignarValor();
+    }
+
+    function asignarValor() {
         let botones = document.querySelectorAll("ion-button");
 
         for (let i = 2; i < botones.length; i++) {
             //console.log(botones[i].innerText);
             botones[i].value = botones[i].innerText;
-            botones[i].addEventListener("click", asignarResultado);
+            //añadimos funcionabilidad, al hacer click dependiendo si es numero o operación 
+            //hará una cosa o otra, y si es "=" hara un eval.
+            botones[i].addEventListener("click", function add() {
+                var result = getResult();
+                if (!isNaN(botones[i].value)) {
+
+                    setResult(botones[i].value);
+                    console.log(botones[i].value)
+                } else {
+
+                    if (botones[i].value == "=") {
+                        calc();
+                        console.log("Calcular")
+                    } else {
+                        setResult(result + botones[i].value);
+                        console.log("signo");
+                    }
+
+                }
+
+            });
+
             // console.log(botones[i].value);
 
         }
 
 
-
-    }
-
-
-    function asignarResultado() {
-
-        let botones = document.querySelectorAll("ion-button");
-
-        for (let i = 2; i < botones.length; i++) {
-
-
-            console.log(botones[i].value);
-
-            if (botones[i].value <= 9 || botones[i].value >= 0) {
-                setResult(botones[i].value);
-            } else {
-                switch (botones[i].value) {
-                    case "+":
-                        setResult("+");
-                        break;
-                    case "-":
-                        setResult("-");
-                        break;
-                    case "*":
-                        setResult("*");
-                        break;
-                    case "/":
-                        setResult("/");
-                        break;
-                    case "AC":
-                        setResult("AC");
-                        break;
-                    case ".":
-                        setResult(".");
-                        break;
-                    case "=":
-                        setResult("=");
-                        break;
-
-
-
-                }
-            }
-        }
 
     }
 
@@ -76,14 +57,10 @@
         return (document.getElementById("result").innerHTML);
     }
 
-    function add(key) {
 
-        var result = getResult();
-        if (result != "0" || isNaN(key)) setResult(result + key);
-        else setResult(key);
-    }
 
     function calc() {
+        console.log("Calculando")
         var result = eval(getResult());
         setResult(result);
     }
