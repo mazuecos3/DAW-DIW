@@ -18,7 +18,7 @@ function main() {
 
     rectangulos(dioses);
     lineas(dioses);
-     tarta(dioses);
+    tarta(dioses);
 
 }
 
@@ -103,23 +103,29 @@ function tarta(dioses) {
 
     let ancho = canvas.width;
     let alto = canvas.height;
-    let inicioAngulo = -Math.PI/2;
+    let partes = ancho / dioses.length;
+    let inicioAngulo = -Math.PI / 2;
     let finAngulo = 0;
     ctx.clearRect(0, 0, ancho, alto);
     ctx.fillStyle = "black";
     ctx.font = "30px Verdana";
     ctx.fillText("Grafico Tarta", 100, 80);
- 
+
     for (let i = 0; i < dioses.length; i++) {
+
+        ctx.strokeStyle = dioses[i].color;
+        ctx.fillStyle = dioses[i].color;
         ctx.beginPath();
         ctx.moveTo(200, 200);
-        finAngulo = inicioAngulo + (parseInt(dioses[i].poder)/18)*2*Math.PI;
+        finAngulo = inicioAngulo + (parseInt(dioses[i].poder) / sumaPoderes(dioses)) * 2 * Math.PI;
         console.log(dioses[i].poder);
-        ctx.arc(200, 200, 100, inicioAngulo,finAngulo);
+        ctx.arc(200, 200, 100, inicioAngulo, finAngulo);
         ctx.moveTo(200, 200);
-        ctx.stroke();
+        ctx.fill();
 
-         inicioAngulo = finAngulo;
+        inicioAngulo = finAngulo;
+        ctx.fillStyle = dioses[i].color;
+        ctx.fillText(dioses[i].nombre, partes * i, alto);
     }
 
 }
