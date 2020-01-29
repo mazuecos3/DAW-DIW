@@ -25,7 +25,7 @@
                 var result = getResult();
                 if (!isNaN(botones[i].value)) {
 
-                    setResult(botones[i].value);
+                    setResult(result + botones[i].value);
                     console.log(botones[i].value)
                 } else {
 
